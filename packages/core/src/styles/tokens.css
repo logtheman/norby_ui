@@ -1,0 +1,425 @@
+:root {
+  /* Primary - HeroUI blue */
+  --color-brand: #006fee;
+  --color-brand-foreground: #fff;
+  --color-brand-50: #dfedfd;
+  --color-brand-100: #b3d4fa;
+  --color-brand-200: #86bbf7;
+  --color-brand-300: #59a1f4;
+  --color-brand-400: #2d88f1;
+  --color-brand-500: #006fee;
+  --color-brand-600: #005cc4;
+  --color-brand-700: #00489b;
+  --color-brand-800: #003571;
+  --color-brand-900: #002147;
+
+  /* Secondary - Purple */
+  --color-secondary: #864bc1;
+  --color-secondary-foreground: #fff;
+  --color-secondary-50: #f0e9f7;
+  --color-secondary-100: #dbc9ec;
+  --color-secondary-200: #c6aae2;
+  --color-secondary-300: #b08ad7;
+  --color-secondary-400: #9b6bcc;
+  --color-secondary-500: #864bc1;
+  --color-secondary-600: #6f3e9f;
+  --color-secondary-700: #57317d;
+  --color-secondary-800: #40245c;
+  --color-secondary-900: #28173a;
+
+  /* Default - Gray */
+  --color-default: #d4d4d8;
+  --color-default-foreground: #000;
+  --color-default-50: #fafafa;
+  --color-default-100: #f2f2f3;
+  --color-default-200: #ebebec;
+  --color-default-300: #e3e3e6;
+  --color-default-400: #dcdcdf;
+  --color-default-500: #d4d4d8;
+  --color-default-600: #afafb2;
+  --color-default-700: #8a8a8c;
+  --color-default-800: #656567;
+  --color-default-900: #404041;
+
+  /* Success - Green */
+  --color-success: #0bc95d;
+  --color-success-foreground: #000;
+  --color-success-50: #e1f8eb;
+  --color-success-100: #b6efce;
+  --color-success-200: #8be5b2;
+  --color-success-300: #60dc96;
+  --color-success-400: #36d279;
+  --color-success-500: #0bc95d;
+  --color-success-600: #09a64d;
+  --color-success-700: #07833c;
+  --color-success-800: #055f2c;
+  --color-success-900: #033c1c;
+
+  /* Warning - Orange */
+  --color-warning: #e99303;
+  --color-warning-foreground: #000;
+  --color-warning-50: #fcf2e0;
+  --color-warning-100: #f8dfb3;
+  --color-warning-200: #f5cc87;
+  --color-warning-300: #f1b95b;
+  --color-warning-400: #eda62f;
+  --color-warning-500: #e99303;
+  --color-warning-600: #c07902;
+  --color-warning-700: #976002;
+  --color-warning-800: #6f4601;
+  --color-warning-900: #462c01;
+
+  /* Danger - Pink */
+  --color-danger: #ff5ca2;
+  --color-danger-foreground: #000;
+  --color-danger-50: #ffebf3;
+  --color-danger-100: #ffcee3;
+  --color-danger-200: #ffb2d3;
+  --color-danger-300: #ff95c3;
+  --color-danger-400: #ff79b2;
+  --color-danger-500: #ff5ca2;
+  --color-danger-600: #d24c86;
+  --color-danger-700: #a63c69;
+  --color-danger-800: #792c4d;
+  --color-danger-900: #4d1c31;
+
+  /* Background & Foreground */
+  --color-bg: #ffffff;
+  --color-fg: #000000;
+
+  /* Content surfaces */
+  --color-surface: #ffffff;
+  --color-surface-foreground: #000;
+  --color-surface-2: #f4f4f5;
+  --color-surface-2-foreground: #000;
+  --color-surface-3: #e4e4e7;
+  --color-surface-3-foreground: #000;
+  --color-surface-4: #d4d4d8;
+  --color-surface-4-foreground: #000;
+
+  /* Borders */
+  --color-border: #e4e4e7;
+  --color-border-hover: #d4d4d8;
+
+  /* Focus */
+  --color-focus: #006FEE;
+  --ring: 0 0 0 3px rgba(0, 111, 238, 0.1);
+
+  /* Overlay */
+  --color-overlay: #000000;
+
+  /* Legacy aliases for compatibility */
+  --color-fg-muted: #71717a;
+  --color-fg-subtle: #a1a1aa;
+  --color-brand-hover: #005cc4;
+  --color-success-light: #e1f8eb;
+  --color-warning-light: #fcf2e0;
+  --color-danger-light: #ffebf3;
+
+  /* spacing & radius */
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-full: 9999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 1.875rem;
+
+  /* Typography Scale - Headlines */
+  --typography-headline-large-1-size: 2.5rem;
+  --typography-headline-large-1-weight: 700;
+  --typography-headline-large-1-line-height: 1.2;
+  --typography-headline-large-2-size: 2rem;
+  --typography-headline-large-2-weight: 600;
+  --typography-headline-large-2-line-height: 1.25;
+  --typography-headline-medium-1-size: 1.75rem;
+  --typography-headline-medium-1-weight: 700;
+  --typography-headline-medium-1-line-height: 1.3;
+  --typography-headline-medium-2-size: 1.5rem;
+  --typography-headline-medium-2-weight: 600;
+  --typography-headline-medium-2-line-height: 1.35;
+  --typography-headline-small-1-size: 1.25rem;
+  --typography-headline-small-1-weight: 700;
+  --typography-headline-small-1-line-height: 1.4;
+  --typography-headline-small-2-size: 1.125rem;
+  --typography-headline-small-2-weight: 600;
+  --typography-headline-small-2-line-height: 1.4;
+
+  /* Typography Scale - Titles */
+  --typography-title-large-size: 1.5rem;
+  --typography-title-large-weight: 600;
+  --typography-title-large-line-height: 1.3;
+  --typography-title-medium-size: 1.25rem;
+  --typography-title-medium-weight: 600;
+  --typography-title-medium-line-height: 1.4;
+
+  /* Typography Scale - Subtitles */
+  --typography-subtitle-large-size: 1.125rem;
+  --typography-subtitle-large-weight: 500;
+  --typography-subtitle-large-line-height: 1.4;
+  --typography-subtitle-medium-size: 1rem;
+  --typography-subtitle-medium-weight: 500;
+  --typography-subtitle-medium-line-height: 1.5;
+  --typography-subtitle-small-size: 0.875rem;
+  --typography-subtitle-small-weight: 500;
+  --typography-subtitle-small-line-height: 1.5;
+
+  /* Typography Scale - Body */
+  --typography-body-large-1-size: 1.125rem;
+  --typography-body-large-1-weight: 400;
+  --typography-body-large-1-line-height: 1.6;
+  --typography-body-large-2-size: 1.125rem;
+  --typography-body-large-2-weight: 500;
+  --typography-body-large-2-line-height: 1.6;
+  --typography-body-medium-1-size: 1rem;
+  --typography-body-medium-1-weight: 400;
+  --typography-body-medium-1-line-height: 1.5;
+  --typography-body-medium-2-size: 1rem;
+  --typography-body-medium-2-weight: 500;
+  --typography-body-medium-2-line-height: 1.5;
+  --typography-body-medium-3-size: 1rem;
+  --typography-body-medium-3-weight: 600;
+  --typography-body-medium-3-line-height: 1.5;
+  --typography-body-small-1-size: 0.875rem;
+  --typography-body-small-1-weight: 400;
+  --typography-body-small-1-line-height: 1.5;
+  --typography-body-small-2-size: 0.875rem;
+  --typography-body-small-2-weight: 500;
+  --typography-body-small-2-line-height: 1.5;
+  --typography-body-small-3-size: 0.875rem;
+  --typography-body-small-3-weight: 600;
+  --typography-body-small-3-line-height: 1.5;
+
+  /* Typography Scale - Labels */
+  --typography-label-large-size: 1rem;
+  --typography-label-large-weight: 600;
+  --typography-label-large-line-height: 1.5;
+  --typography-label-medium-size: 0.875rem;
+  --typography-label-medium-weight: 600;
+  --typography-label-medium-line-height: 1.5;
+  --typography-label-small-size: 0.75rem;
+  --typography-label-small-weight: 600;
+  --typography-label-small-line-height: 1.4;
+
+  /* Typography Scale - Links */
+  --typography-link-large-size: 1.125rem;
+  --typography-link-large-weight: 500;
+  --typography-link-large-line-height: 1.5;
+  --typography-link-medium-size: 1rem;
+  --typography-link-medium-weight: 500;
+  --typography-link-medium-line-height: 1.5;
+  --typography-link-small-size: 0.875rem;
+  --typography-link-small-weight: 500;
+  --typography-link-small-line-height: 1.5;
+
+  /* Typography Scale - Legal Links */
+  --typography-legal-link-large-size: 1rem;
+  --typography-legal-link-large-weight: 400;
+  --typography-legal-link-large-line-height: 1.5;
+  --typography-legal-link-medium-size: 0.875rem;
+  --typography-legal-link-medium-weight: 400;
+  --typography-legal-link-medium-line-height: 1.5;
+  --typography-legal-link-small-size: 0.75rem;
+  --typography-legal-link-small-weight: 400;
+  --typography-legal-link-small-line-height: 1.4;
+
+  /* Typography Scale - Price */
+  --typography-price-currency-large-size: 2rem;
+  --typography-price-currency-large-weight: 700;
+  --typography-price-currency-large-line-height: 1.2;
+  --typography-price-currency-small-size: 1.25rem;
+  --typography-price-currency-small-weight: 700;
+  --typography-price-currency-small-line-height: 1.3;
+  --typography-price-label-large-1-size: 1rem;
+  --typography-price-label-large-1-weight: 400;
+  --typography-price-label-large-1-line-height: 1.5;
+  --typography-price-label-large-2-size: 1rem;
+  --typography-price-label-large-2-weight: 500;
+  --typography-price-label-large-2-line-height: 1.5;
+  --typography-price-label-small-1-size: 0.875rem;
+  --typography-price-label-small-1-weight: 400;
+  --typography-price-label-small-1-line-height: 1.5;
+  --typography-price-label-small-2-size: 0.875rem;
+  --typography-price-label-small-2-weight: 500;
+  --typography-price-label-small-2-line-height: 1.5;
+
+  /* Typography Scale - Simple Variants */
+  --typography-headline-size: 2rem;
+  --typography-headline-weight: 700;
+  --typography-headline-line-height: 1.25;
+  --typography-title-size: 1.5rem;
+  --typography-title-weight: 600;
+  --typography-title-line-height: 1.3;
+  --typography-subtitle-size: 1.125rem;
+  --typography-subtitle-weight: 500;
+  --typography-subtitle-line-height: 1.4;
+  --typography-body-regular-size: 1rem;
+  --typography-body-regular-weight: 400;
+  --typography-body-regular-line-height: 1.5;
+  --typography-body-emphasized-size: 1rem;
+  --typography-body-emphasized-weight: 600;
+  --typography-body-emphasized-line-height: 1.5;
+  --typography-body-strikethrough-size: 1rem;
+  --typography-body-strikethrough-weight: 400;
+  --typography-body-strikethrough-line-height: 1.5;
+  --typography-body-link-size: 1rem;
+  --typography-body-link-weight: 500;
+  --typography-body-link-line-height: 1.5;
+  --typography-body-legal-link-size: 0.875rem;
+  --typography-body-legal-link-weight: 400;
+  --typography-body-legal-link-line-height: 1.5;
+  --typography-accent-size: 0.875rem;
+  --typography-accent-weight: 600;
+  --typography-accent-line-height: 1.5;
+
+  /* shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* disabled opacity */
+  --disabled-opacity: 0.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Primary - HeroUI blue */
+    --color-brand: #006fee;
+    --color-brand-foreground: #fff;
+    --color-brand-50: #002147;
+    --color-brand-100: #003571;
+    --color-brand-200: #00489b;
+    --color-brand-300: #005cc4;
+    --color-brand-400: #006fee;
+    --color-brand-500: #2d88f1;
+    --color-brand-600: #59a1f4;
+    --color-brand-700: #86bbf7;
+    --color-brand-800: #b3d4fa;
+    --color-brand-900: #dfedfd;
+
+    /* Secondary - Purple */
+    --color-secondary: #864bc1;
+    --color-secondary-foreground: #fff;
+    --color-secondary-50: #28173a;
+    --color-secondary-100: #40245c;
+    --color-secondary-200: #57317d;
+    --color-secondary-300: #6f3e9f;
+    --color-secondary-400: #864bc1;
+    --color-secondary-500: #9b6bcc;
+    --color-secondary-600: #b08ad7;
+    --color-secondary-700: #c6aae2;
+    --color-secondary-800: #dbc9ec;
+    --color-secondary-900: #f0e9f7;
+
+    /* Default - Gray */
+    --color-default: #45454e;
+    --color-default-foreground: #fff;
+    --color-default-50: #0e0e10;
+    --color-default-100: #1c1c1f;
+    --color-default-200: #29292f;
+    --color-default-300: #37373e;
+    --color-default-400: #45454e;
+    --color-default-500: #6a6a71;
+    --color-default-600: #8f8f95;
+    --color-default-700: #b5b5b8;
+    --color-default-800: #dadadc;
+    --color-default-900: #ffffff;
+
+    /* Success - Green */
+    --color-success: #0bc95d;
+    --color-success-foreground: #000;
+    --color-success-50: #033c1c;
+    --color-success-100: #055f2c;
+    --color-success-200: #07833c;
+    --color-success-300: #09a64d;
+    --color-success-400: #0bc95d;
+    --color-success-500: #36d279;
+    --color-success-600: #60dc96;
+    --color-success-700: #8be5b2;
+    --color-success-800: #b6efce;
+    --color-success-900: #e1f8eb;
+
+    /* Warning - Orange */
+    --color-warning: #e99303;
+    --color-warning-foreground: #000;
+    --color-warning-50: #462c01;
+    --color-warning-100: #6f4601;
+    --color-warning-200: #976002;
+    --color-warning-300: #c07902;
+    --color-warning-400: #e99303;
+    --color-warning-500: #eda62f;
+    --color-warning-600: #f1b95b;
+    --color-warning-700: #f5cc87;
+    --color-warning-800: #f8dfb3;
+    --color-warning-900: #fcf2e0;
+
+    /* Danger - Pink */
+    --color-danger: #ff5ca2;
+    --color-danger-foreground: #000;
+    --color-danger-50: #4d1c31;
+    --color-danger-100: #792c4d;
+    --color-danger-200: #a63c69;
+    --color-danger-300: #d24c86;
+    --color-danger-400: #ff5ca2;
+    --color-danger-500: #ff79b2;
+    --color-danger-600: #ff95c3;
+    --color-danger-700: #ffb2d3;
+    --color-danger-800: #ffcee3;
+    --color-danger-900: #ffebf3;
+
+    /* Background & Foreground */
+    --color-bg: #000000;
+    --color-fg: #ffffff;
+
+    /* Content surfaces */
+    --color-surface: #18181b;
+    --color-surface-foreground: #fff;
+    --color-surface-2: #27272a;
+    --color-surface-2-foreground: #fff;
+    --color-surface-3: #3f3f46;
+    --color-surface-3-foreground: #fff;
+    --color-surface-4: #52525b;
+    --color-surface-4-foreground: #fff;
+
+    /* Borders */
+    --color-border: #3f3f46;
+    --color-border-hover: #52525b;
+
+    /* Focus */
+    --color-focus: #006FEE;
+    --ring: 0 0 0 3px rgba(0, 111, 238, 0.2);
+
+    /* Overlay */
+    --color-overlay: #ffffff;
+
+    /* Legacy aliases for compatibility */
+    --color-fg-muted: #a1a1aa;
+    --color-fg-subtle: #71717a;
+    --color-brand-hover: #2d88f1;
+    --color-success-light: #033c1c;
+    --color-warning-light: #462c01;
+    --color-danger-light: #4d1c31;
+
+    /* shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+  }
+}

@@ -1,0 +1,42 @@
+import * as React from 'react';
+
+export interface RangeCalendarProps {
+  value?: { start?: Date; end?: Date };
+  defaultValue?: { start?: Date; end?: Date };
+  onChange?: (range: { start?: Date; end?: Date }) => void;
+  minValue?: Date;
+  maxValue?: Date;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  className?: string;
+}
+
+export const RangeCalendar = React.forwardRef<HTMLDivElement, RangeCalendarProps>(
+  (
+    {
+      value,
+      defaultValue,
+      onChange,
+      minValue,
+      maxValue,
+      isDisabled = false,
+      isReadOnly = false,
+      className
+    },
+    ref
+  ) => {
+    // Simplified implementation - full calendar would require a date library
+    // This provides the API structure matching HeroUI
+    return (
+      <div ref={ref} className={`lui-range-calendar ${className || ''}`}>
+        <div className="lui-range-calendar__note">
+          Full calendar implementation requires a date library (e.g., date-fns, dayjs).
+          This is a placeholder component matching HeroUI's API structure.
+        </div>
+      </div>
+    );
+  }
+);
+RangeCalendar.displayName = 'RangeCalendar';
+
+
