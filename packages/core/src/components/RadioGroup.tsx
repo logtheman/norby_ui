@@ -79,7 +79,8 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
     },
     ref
   ) => {
-    const name = nameProp || React.useId();
+    const generatedName = React.useId();
+    const name = nameProp || generatedName;
     const [internalValue, setInternalValue] = React.useState(defaultValue || '');
     const controlled = valueProp !== undefined;
     const value = controlled ? valueProp : internalValue;

@@ -57,7 +57,8 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref
   ) => {
-    const inputId = id ?? React.useId();
+    const generatedId = React.useId();
+    const inputId = id ?? generatedId;
     const [internalValue, setInternalValue] = React.useState(defaultValue || '');
     const controlledValue = value !== undefined ? value : internalValue;
     const hasValue = controlledValue !== '';

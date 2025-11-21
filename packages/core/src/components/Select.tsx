@@ -48,7 +48,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref
   ) => {
-    const selectId = id ?? React.useId();
+    const generatedId = React.useId();
+    const selectId = id ?? generatedId;
     const descriptionId = description ? `${selectId}-description` : undefined;
     const errorId = errorMessage ? `${selectId}-error` : undefined;
     const describedBy = [descriptionId, errorId].filter(Boolean).join(' ') || undefined;

@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running type check..."
+pnpm type-check || {
+  echo "❌ Type check failed. Please fix type errors before pushing."
+  exit 1
+}
+
+echo "🔍 Running linter..."
+pnpm lint --max-warnings=100 || {
+  echo "❌ Linting failed. Please fix linting errors before pushing."
+  exit 1
+}
+
+echo "✅ All checks passed!"
+

@@ -34,7 +34,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
       'lui-spinner',
       `lui-spinner--${size}`,
       `lui-spinner--${color}`,
-      label && `lui-spinner--label-${labelPlacement}`,
+      label ? `lui-spinner--label-${labelPlacement}` : false,
       disableAnimation && 'lui-spinner--no-animation',
       className
     );

@@ -98,8 +98,6 @@ export const Drawer: React.FC<DrawerProps> = ({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   const contextValue = React.useMemo(
     () => ({
       onClose: handleClose,
@@ -108,6 +106,8 @@ export const Drawer: React.FC<DrawerProps> = ({
     }),
     [handleClose, placement, size]
   );
+
+  if (!isOpen) return null;
 
   const backdropCls = cx(
     'lui-drawer__backdrop',

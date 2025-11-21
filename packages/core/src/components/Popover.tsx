@@ -140,8 +140,8 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
   ({ className, children, ...props }, ref) => {
     const { placement, radius } = React.useContext(PopoverContext);
     const [position, setPosition] = React.useState({ top: 0, left: 0 });
-    const contentRef = React.useRef<HTMLDivElement>(null);
-    const triggerRef = React.useRef<HTMLElement>(null);
+    const contentRef = React.useRef<HTMLDivElement | null>(null);
+    const triggerRef = React.useRef<HTMLElement | null>(null);
 
     React.useEffect(() => {
       // Find trigger element
@@ -208,9 +208,12 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
     return (
       <div
         ref={(node) => {
-          if (typeof ref === 'function') ref(node);
-          else if (ref) (ref as React.MutableRefObject<HTMLDivElement>).current = node;
           contentRef.current = node;
+          if (typeof ref === 'function') {
+            ref(node);
+          } else if (ref && node) {
+            (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+          }
         }}
         className={cls}
         role="dialog"

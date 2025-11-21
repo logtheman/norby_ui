@@ -85,7 +85,7 @@ export const WithIcons: Story = {
 
 export const WithoutTitle: Story = {
   render: () => (
-    <Alert color="info">
+    <Alert color="primary">
       This alert doesn't have a title, just a message.
     </Alert>
   )

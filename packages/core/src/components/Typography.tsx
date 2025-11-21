@@ -54,29 +54,45 @@ export type TypographyVariant =
   | 'bodyLegalLink'
   | 'accent';
 
-export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
+type PolymorphicTypographyProps<E extends React.ElementType> = {
   variant?: TypographyVariant;
-  as?: React.ElementType;
+  as?: E;
   className?: string;
   children?: React.ReactNode;
-}
+} & React.ComponentPropsWithoutRef<E>;
 
 function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-export const Typography = React.forwardRef<HTMLElement, TypographyProps>(
-  ({ variant = 'bodyRegular', as, className, children, ...props }, ref) => {
+const TypographyComponent = React.forwardRef(
+  <E extends React.ElementType = 'p'>(
+    {
+      variant = 'bodyRegular',
+      as,
+      className,
+      children,
+      ...rest
+    }: PolymorphicTypographyProps<E>,
+    ref: React.Ref<Element>
+  ) => {
     const Component = (as || 'p') as any;
     const cls = cx('lui-typography', `lui-typography--${variant}`, className);
 
     return (
-      <Component ref={ref} className={cls} {...props}>
+      <Component ref={ref} className={cls} {...rest}>
         {children}
       </Component>
     );
   }
 );
-Typography.displayName = 'Typography';
+
+TypographyComponent.displayName = 'Typography';
+
+export const Typography = TypographyComponent as <E extends React.ElementType = 'p'>(
+  props: PolymorphicTypographyProps<E> & { ref?: React.ForwardedRef<React.ElementRef<E>> }
+) => React.ReactElement | null;
+
+export type TypographyProps<E extends React.ElementType = 'p'> = PolymorphicTypographyProps<E>;
 
 

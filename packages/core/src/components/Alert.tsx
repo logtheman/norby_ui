@@ -4,7 +4,7 @@ type Variant = 'flat' | 'bordered' | 'solid';
 type Color = 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
 type Radius = 'none' | 'sm' | 'md' | 'lg' | 'full';
 
-export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AlertProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   variant?: Variant;
   color?: Color;
   radius?: Radius;

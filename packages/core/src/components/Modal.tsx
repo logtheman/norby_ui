@@ -105,8 +105,6 @@ export const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   const contextValue = React.useMemo(
     () => ({
       onClose: handleClose,
@@ -116,6 +114,8 @@ export const Modal: React.FC<ModalProps> = ({
     }),
     [handleClose, size, radius, hideCloseButton]
   );
+
+  if (!isOpen) return null;
 
   const backdropCls = cx(
     'lui-modal__backdrop',

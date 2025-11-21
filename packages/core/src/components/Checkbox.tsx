@@ -40,7 +40,7 @@ function cx(...classes: Array<string | false | null | undefined>) {
 const CheckboxGroupContext = React.createContext<{
   name: string;
   value: string[];
-  onChange?: (value: string[]) => void;
+  onChange?: (checkboxValue: string, checked: boolean) => void;
   size: Size;
   color: Color;
   radius: Radius;
@@ -199,7 +199,7 @@ export const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps
     const cls = cx(
       'lui-checkbox-group',
       `lui-checkbox-group--${orientation}`,
-      errorMessage && 'lui-checkbox-group--invalid',
+      errorMessage ? 'lui-checkbox-group--invalid' : false,
       className
     );
 

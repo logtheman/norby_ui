@@ -5,7 +5,7 @@ type Color = 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'dang
 type Size = 'sm' | 'md' | 'lg';
 type Radius = 'none' | 'sm' | 'md' | 'lg' | 'full';
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface BadgeProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'content'> {
   variant?: Variant;
   color?: Color;
   size?: Size;

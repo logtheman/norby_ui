@@ -44,7 +44,8 @@ export const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
     },
     ref
   ) => {
-    const inputId = id ?? React.useId();
+    const generatedId = React.useId();
+    const inputId = id ?? generatedId;
     const descriptionId = description ? `${inputId}-description` : undefined;
     const errorId = errorMessage ? `${inputId}-error` : undefined;
     const describedBy = [descriptionId, errorId].filter(Boolean).join(' ') || undefined;
