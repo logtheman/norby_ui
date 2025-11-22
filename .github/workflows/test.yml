@@ -1,0 +1,93 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Run tests with detailed output
+        id: test
+        continue-on-error: true
+        run: |
+          # Run tests and capture output
+          pnpm test --reporter=verbose 2>&1 | tee test-output.txt
+          TEST_EXIT_CODE=${PIPESTATUS[0]}
+          echo "exit_code=$TEST_EXIT_CODE" >> $GITHUB_OUTPUT
+          
+          # Extract failed tests to a separate file
+          grep -E "(FAIL|×|Error:)" test-output.txt > test-failures.txt || true
+          
+          # Create JSON summary of failures
+          echo '{"failures":[]}' > test-summary.json || echo '{"failures":[]}' > test-summary.json
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ github.run_number }}
+          path: |
+            test-output.txt
+            test-failures.txt
+            test-summary.json
+            packages/core/coverage/
+          retention-days: 30
+      - name: Create test summary
+        if: steps.test.outputs.exit_code != 0
+        run: |
+          echo "## ❌ Test Failures Detected" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Failures:** $(grep -c 'FAIL\|×' test-output.txt || echo '0')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Failed Tests:" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          head -50 test-failures.txt >> $GITHUB_STEP_SUMMARY || echo "No failures found" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📦 **Full test output available in artifacts**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### To fix:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Download the test-results artifact" >> $GITHUB_STEP_SUMMARY
+          echo "2. Share the test-output.txt file with your AI assistant" >> $GITHUB_STEP_SUMMARY
+          echo "3. Or copy the error messages from the summary above" >> $GITHUB_STEP_SUMMARY
+      - name: Comment on PR with errors
+        if: github.event_name == 'pull_request' && steps.test.outputs.exit_code != 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let comment = '## ❌ Tests Failed\n\n';
+            try {
+              const failures = fs.readFileSync('test-failures.txt', 'utf8');
+              comment += '### Failed Tests:\n\n';
+              comment += '```\n';
+              comment += failures.substring(0, 4000); // GitHub comment limit
+              comment += '\n```\n\n';
+              comment += '📦 Full output available in [artifacts](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})';
+            } catch (e) {
+              comment += 'Check artifacts for full test output.';
+            }
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+      - name: Fail if tests failed
+        if: steps.test.outputs.exit_code != 0
+        run: |
+          echo "❌ Tests failed. Check artifacts and PR comments for details."
+          exit 1
+

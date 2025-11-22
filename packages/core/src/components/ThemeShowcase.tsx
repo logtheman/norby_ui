@@ -46,7 +46,7 @@ const VariantSection: React.FC<{ title: string; children: React.ReactNode }> = (
   </div>
 );
 
-export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant, color, size }) => {
+export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant: _variant, color: _color, size: _size }) => {
   const buttonVariants: Variant[] = ['solid', 'bordered', 'light', 'flat', 'faded', 'shadow', 'ghost'];
   const inputVariants: Variant[] = ['flat', 'bordered', 'faded', 'underlined'];
   const colors: Color[] = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'];
@@ -125,7 +125,7 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
               {showcase.variants.map((v) => {
                 if (showcase.name === 'Button') {
                   return (
-                    <Button key={v} variant={v as any} color="primary">
+                    <Button key={v} variant={v as 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | 'ghost'} color="primary">
                       {v.charAt(0).toUpperCase() + v.slice(1)}
                     </Button>
                   );
@@ -134,7 +134,7 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
                   return (
                     <TextField
                       key={v}
-                      variant={v as any}
+                      variant={v as 'flat' | 'bordered' | 'faded' | 'underlined'}
                       color="primary"
                       label={`${v.charAt(0).toUpperCase() + v.slice(1)}`}
                       placeholder="Placeholder"
@@ -145,7 +145,7 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
                   return (
                     <Select
                       key={v}
-                      variant={v as any}
+                      variant={v as 'flat' | 'bordered' | 'faded' | 'underlined'}
                       color="primary"
                       label={`${v.charAt(0).toUpperCase() + v.slice(1)}`}
                       placeholder="Select option"
@@ -308,7 +308,7 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
                         border: '1px solid var(--color-border)'
                       }}
                     >
-                      <Button variant={variant as any} color={color} size="md">
+                      <Button variant={variant as 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | 'ghost'} color={color} size="md">
                         {variant}
                       </Button>
                       <div style={{ textAlign: 'center' }}>
@@ -354,13 +354,13 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
             const tabColor = c === 'default' ? 'primary' : c;
             return (
               <Tabs key={c} color={tabColor} defaultSelectedKey="1">
-                <Tab key="1" title="Tab 1">
+                <Tab id="1" title="Tab 1">
                   Content for Tab 1 ({c})
                 </Tab>
-                <Tab key="2" title="Tab 2">
+                <Tab id="2" title="Tab 2">
                   Content for Tab 2 ({c})
                 </Tab>
-                <Tab key="3" title="Tab 3">
+                <Tab id="3" title="Tab 3">
                   Content for Tab 3 ({c})
                 </Tab>
               </Tabs>

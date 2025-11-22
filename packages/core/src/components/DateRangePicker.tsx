@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextField, TextFieldProps } from './TextField';
+import { TextField } from './TextField';
 
 type Variant = 'flat' | 'bordered' | 'faded' | 'underlined';
 type Color = 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';

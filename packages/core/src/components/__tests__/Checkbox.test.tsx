@@ -43,7 +43,7 @@ describe('Checkbox', () => {
     });
 
     it('works as controlled component', async () => {
-      const user = userEvent.setup();
+      const _user = userEvent.setup();
       const { rerender } = render(<Checkbox checked={false}>Controlled</Checkbox>);
       const checkbox = screen.getByRole('checkbox');
       

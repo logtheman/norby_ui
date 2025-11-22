@@ -49,7 +49,7 @@ export const Button = React.forwardRef(
       isIconOnly = false,
       isDisabled = false,
       fullWidth = false,
-      disableRipple = false,
+      disableRipple: _disableRipple = false,
       disableAnimation = false,
       className,
       children,
@@ -58,7 +58,7 @@ export const Button = React.forwardRef(
     }: PolymorphicProps<E>,
     ref: React.Ref<Element>
   ) => {
-    const Comp = (as || 'button') as any;
+    const Comp = (as || 'button') as React.ElementType;
     const disabledState = disabled || isDisabled || isLoading;
 
     const spinnerComponent = spinner || <DefaultSpinner />;

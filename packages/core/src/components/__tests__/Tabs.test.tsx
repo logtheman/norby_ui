@@ -8,19 +8,19 @@ describe('Tabs', () => {
     it('renders tabs and panels', () => {
       render(
         <Tabs>
-          <Tab key="1" title="Tab 1">Content 1</Tab>
-          <Tab key="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">Content 1</Tab>
+          <Tab id="2" title="Tab 2">Content 2</Tab>
         </Tabs>
       );
       expect(screen.getByRole('tab', { name: /tab 1/i })).toBeInTheDocument();
       expect(screen.getByRole('tab', { name: /tab 2/i })).toBeInTheDocument();
-      expect(screen.getByRole('tabpanel')).toBeInTheDocument();
+      expect(screen.getByRole('tabpanel', { hidden: false })).toBeInTheDocument();
     });
 
     it('renders tablist', () => {
       render(
         <Tabs>
-          <Tab key="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">Content</Tab>
         </Tabs>
       );
       expect(screen.getByRole('tablist')).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe('Tabs', () => {
     it('applies default classes', () => {
       render(
         <Tabs>
-          <Tab key="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">Content</Tab>
         </Tabs>
       );
       const tabs = screen.getByRole('tablist').closest('.lui-tabs');
@@ -43,8 +43,8 @@ describe('Tabs', () => {
       const user = userEvent.setup();
       render(
         <Tabs defaultSelectedKey="1">
-          <Tab key="1" title="Tab 1">Content 1</Tab>
-          <Tab key="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">Content 1</Tab>
+          <Tab id="2" title="Tab 2">Content 2</Tab>
         </Tabs>
       );
       
@@ -58,8 +58,8 @@ describe('Tabs', () => {
     it('works as controlled component', () => {
       render(
         <Tabs selectedKey="1">
-          <Tab key="1" title="Tab 1">Content 1</Tab>
-          <Tab key="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">Content 1</Tab>
+          <Tab id="2" title="Tab 2">Content 2</Tab>
         </Tabs>
       );
       
@@ -73,8 +73,8 @@ describe('Tabs', () => {
       const user = userEvent.setup();
       render(
         <Tabs onSelectionChange={handleSelectionChange}>
-          <Tab key="1" title="Tab 1">Content 1</Tab>
-          <Tab key="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">Content 1</Tab>
+          <Tab id="2" title="Tab 2">Content 2</Tab>
         </Tabs>
       );
       
@@ -86,8 +86,8 @@ describe('Tabs', () => {
       const user = userEvent.setup();
       render(
         <Tabs>
-          <Tab key="1" title="Tab 1">Content 1</Tab>
-          <Tab key="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">Content 1</Tab>
+          <Tab id="2" title="Tab 2">Content 2</Tab>
         </Tabs>
       );
       
@@ -105,7 +105,7 @@ describe('Tabs', () => {
       it(`renders with ${variant} variant`, () => {
         render(
           <Tabs variant={variant}>
-            <Tab key="1" title="Tab 1">Content</Tab>
+            <Tab id="1" title="Tab 1">Content</Tab>
           </Tabs>
         );
         const tab = screen.getByRole('tab');
@@ -121,7 +121,7 @@ describe('Tabs', () => {
       it(`renders with ${placement} placement`, () => {
         render(
           <Tabs placement={placement}>
-            <Tab key="1" title="Tab 1">Content</Tab>
+            <Tab id="1" title="Tab 1">Content</Tab>
           </Tabs>
         );
         const tabs = screen.getByRole('tablist').closest('.lui-tabs');
@@ -134,7 +134,7 @@ describe('Tabs', () => {
     it('disables all tabs when group is disabled', () => {
       render(
         <Tabs isDisabled>
-          <Tab key="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">Content</Tab>
         </Tabs>
       );
       expect(screen.getByRole('tab')).toBeDisabled();
@@ -143,7 +143,7 @@ describe('Tabs', () => {
     it('disables individual tab', () => {
       render(
         <Tabs>
-          <Tab key="1" title="Tab 1" isDisabled>Content</Tab>
+          <Tab id="1" title="Tab 1" isDisabled>Content</Tab>
         </Tabs>
       );
       expect(screen.getByRole('tab')).toBeDisabled();
@@ -154,7 +154,7 @@ describe('Tabs', () => {
     it('has proper ARIA attributes', () => {
       render(
         <Tabs defaultSelectedKey="1">
-          <Tab key="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">Content</Tab>
         </Tabs>
       );
       const tab = screen.getByRole('tab');
@@ -166,7 +166,7 @@ describe('Tabs', () => {
       const ref = vi.fn();
       render(
         <Tabs ref={ref}>
-          <Tab key="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">Content</Tab>
         </Tabs>
       );
       expect(ref).toHaveBeenCalled();

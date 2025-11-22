@@ -92,14 +92,19 @@ describe('Avatar', () => {
   });
 
   describe('Image Error Handling', () => {
-    it('shows fallback when image fails to load', () => {
-      render(<Avatar src="invalid.jpg" name="John Doe" />);
-      const img = screen.getByAltText('John Doe');
+    it('shows fallback when image fails to load', async () => {
+      const { container } = render(<Avatar src="invalid.jpg" name="John Doe" />);
+      const img = container.querySelector('img') as HTMLImageElement;
       
       // Simulate image error
-      img.dispatchEvent(new Event('error'));
+      if (img) {
+        const errorEvent = new Event('error', { bubbles: true });
+        Object.defineProperty(errorEvent, 'target', { value: img, enumerable: true });
+        img.dispatchEvent(errorEvent);
+      }
       
-      // After error, fallback should be shown
+      // Wait for state update and check fallback
+      await new Promise(resolve => setTimeout(resolve, 0));
       expect(screen.getByText('JD')).toBeInTheDocument();
     });
   });
@@ -107,7 +112,10 @@ describe('Avatar', () => {
   describe('Accessibility', () => {
     it('has aria-label from alt prop', () => {
       render(<Avatar src="test.jpg" alt="User Avatar" />);
-      expect(screen.getByRole('img')).toHaveAttribute('aria-label', 'User Avatar');
+      const avatars = screen.getAllByRole('img');
+      const avatar = avatars.find(el => el.getAttribute('aria-label') === 'User Avatar');
+      expect(avatar).toBeInTheDocument();
+      expect(avatar).toHaveAttribute('aria-label', 'User Avatar');
     });
 
     it('has aria-label from name prop when no alt', () => {

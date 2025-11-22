@@ -19,7 +19,7 @@ function cx(...classes: Array<string | false | null | undefined>) {
 
 export const Text = React.forwardRef<HTMLElement, TextProps>(
   ({ as, size, color = 'default', weight, className, children, ...props }, ref) => {
-    const Component = (as || 'p') as any;
+    const Component = (as || 'p') as React.ElementType;
     const sizeClass = size ? `lui-text--${size}` : undefined;
     const colorClass = `lui-text--color-${color}`;
     const weightClass = weight ? `lui-text--weight-${weight}` : undefined;

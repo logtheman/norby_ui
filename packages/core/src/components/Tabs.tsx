@@ -20,7 +20,7 @@ export interface TabsProps {
 }
 
 export interface TabProps {
-  key: string;
+  id: string;
   title: React.ReactNode;
   isDisabled?: boolean;
   className?: string;
@@ -70,12 +70,12 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     const controlled = selectedKeyProp !== undefined;
     const selectedKey = controlled ? selectedKeyProp : internalSelectedKey;
 
-    const handleSelectionChange = (key: string) => {
+    const handleSelectionChange = React.useCallback((key: string) => {
       if (!controlled) {
         setInternalSelectedKey(key);
       }
       onSelectionChange?.(key);
-    };
+    }, [controlled, onSelectionChange]);
 
     const contextValue = React.useMemo(
       () => ({
@@ -115,9 +115,9 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
           <div className="lui-tabs__list" role="tablist">
             {tabs.map((tab, index) => (
               <TabButton
-                key={tab.key}
+                key={tab.id}
                 tab={tab}
-                isSelected={selectedKey === tab.key}
+                isSelected={selectedKey === tab.id}
                 index={index}
               />
             ))}
@@ -125,12 +125,14 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
           <div className="lui-tabs__panels">
             {panels.map((panel, index) => (
               <div
-                key={tabs[index].key}
+                key={tabs[index].id}
                 className={cx(
                   'lui-tabs__panel',
-                  selectedKey === tabs[index].key && 'lui-tabs__panel--active'
+                  selectedKey === tabs[index].id && 'lui-tabs__panel--active'
                 )}
                 role="tabpanel"
+                aria-hidden={selectedKey !== tabs[index].id}
+                hidden={selectedKey !== tabs[index].id}
               >
                 {panel}
               </div>
@@ -146,18 +148,18 @@ Tabs.displayName = 'Tabs';
 const TabButton = ({
   tab,
   isSelected,
-  index
+  index: _index
 }: {
   tab: TabProps;
   isSelected: boolean;
   index: number;
 }) => {
   const context = React.useContext(TabsContext);
-  const { variant, color, size, placement, isDisabled, onSelectionChange } = context;
+  const { variant, color, size, isDisabled, onSelectionChange } = context;
 
   const handleClick = () => {
     if (!isDisabled && !tab.isDisabled) {
-      onSelectionChange?.(tab.key);
+      onSelectionChange?.(tab.id);
     }
   };
 
@@ -175,9 +177,9 @@ const TabButton = ({
     <button
       type="button"
       role="tab"
-      aria-selected={isSelected}
-      aria-controls={`tabpanel-${tab.key}`}
-      id={`tab-${tab.key}`}
+      aria-selected={isSelected ? 'true' : 'false'}
+      aria-controls={`tabpanel-${tab.id}`}
+      id={`tab-${tab.id}`}
       tabIndex={isSelected ? 0 : -1}
       onClick={handleClick}
       disabled={isDisabled || tab.isDisabled}

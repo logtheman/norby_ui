@@ -69,19 +69,27 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       checked,
       defaultChecked,
       onChange,
+      value,
       ...props
     },
     ref
   ) => {
     const context = React.useContext(CheckboxGroupContext);
+    const isInGroup = context.name !== '';
     const finalSize = size || context.size;
     const finalColor = color || context.color;
     const finalRadius = radius || context.radius;
     const finalDisabled = isDisabled ?? context.isDisabled ?? false;
 
+    // If in group, use group's value; otherwise use local state
+    // Convert value to string for group comparison (value can be string | number | readonly string[])
+    const valueStr: string | undefined = value !== undefined ? String(value) as string : undefined;
+    const groupChecked = isInGroup && valueStr !== undefined ? context.value.includes(valueStr) : undefined;
     const [isChecked, setIsChecked] = React.useState(defaultChecked || false);
     const controlled = checked !== undefined;
-    const currentChecked = controlled ? checked : isChecked;
+    const currentChecked = isInGroup && valueStr !== undefined 
+      ? groupChecked 
+      : (controlled ? checked : isChecked);
 
     const inputRef = React.useRef<HTMLInputElement>(null);
     React.useImperativeHandle(ref, () => inputRef.current!);
@@ -93,10 +101,16 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     }, [isIndeterminate]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (!controlled) {
-        setIsChecked(e.target.checked);
+      if (isInGroup && valueStr !== undefined) {
+        // In group, use group's onChange
+        context.onChange?.(valueStr as string, e.target.checked);
+      } else {
+        // Standalone checkbox
+        if (!controlled) {
+          setIsChecked(e.target.checked);
+        }
+        onChange?.(e);
       }
-      onChange?.(e);
     };
 
     const cls = cx(
@@ -119,14 +133,15 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         <input
           ref={inputRef}
           type="checkbox"
-          checked={controlled ? checked : isChecked}
-          defaultChecked={defaultChecked}
+          checked={isInGroup && valueStr !== undefined ? groupChecked : (controlled ? checked : isChecked)}
+          defaultChecked={!isInGroup ? defaultChecked : undefined}
           onChange={handleChange}
           disabled={finalDisabled}
           aria-checked={isIndeterminate ? 'mixed' : currentChecked}
           aria-disabled={finalDisabled || undefined}
           aria-describedby={descriptionId}
           className="lui-checkbox__input"
+          value={value}
           {...props}
         />
         <span className="lui-checkbox__control" />
@@ -172,7 +187,7 @@ export const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps
     const controlled = valueProp !== undefined;
     const value = controlled ? valueProp : internalValue;
 
-    const handleChange = (checkboxValue: string, checked: boolean) => {
+    const handleChange = React.useCallback((checkboxValue: string, checked: boolean) => {
       const newValue = checked
         ? [...value, checkboxValue]
         : value.filter((v) => v !== checkboxValue);
@@ -180,7 +195,7 @@ export const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps
         setInternalValue(newValue);
       }
       onChange?.(newValue);
-    };
+    }, [value, controlled, onChange]);
 
     const contextValue = React.useMemo(
       () => ({

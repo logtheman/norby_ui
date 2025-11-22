@@ -5,8 +5,9 @@ import { DatePicker } from '../DatePicker';
 describe('DatePicker', () => {
   describe('Rendering', () => {
     it('renders date input element', () => {
-      render(<DatePicker />);
-      const input = screen.getByRole('textbox');
+      const { container } = render(<DatePicker />);
+      const input = container.querySelector('input[type="date"]');
+      expect(input).toBeInTheDocument();
       expect(input).toHaveAttribute('type', 'date');
     });
 
@@ -16,8 +17,8 @@ describe('DatePicker', () => {
     });
 
     it('applies min and max attributes', () => {
-      render(<DatePicker min="2024-01-01" max="2024-12-31" />);
-      const input = screen.getByRole('textbox');
+      const { container } = render(<DatePicker min="2024-01-01" max="2024-12-31" />);
+      const input = container.querySelector('input[type="date"]');
       expect(input).toHaveAttribute('min', '2024-01-01');
       expect(input).toHaveAttribute('max', '2024-12-31');
     });

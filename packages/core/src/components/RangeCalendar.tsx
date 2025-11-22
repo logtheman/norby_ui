@@ -14,13 +14,13 @@ export interface RangeCalendarProps {
 export const RangeCalendar = React.forwardRef<HTMLDivElement, RangeCalendarProps>(
   (
     {
-      value,
-      defaultValue,
-      onChange,
-      minValue,
-      maxValue,
-      isDisabled = false,
-      isReadOnly = false,
+      value: _value,
+      defaultValue: _defaultValue,
+      onChange: _onChange,
+      minValue: _minValue,
+      maxValue: _maxValue,
+      isDisabled: _isDisabled = false,
+      isReadOnly: _isReadOnly = false,
       className
     },
     ref

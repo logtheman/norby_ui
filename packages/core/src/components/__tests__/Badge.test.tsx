@@ -32,7 +32,7 @@ describe('Badge', () => {
   });
 
   describe('Variants', () => {
-    const variants = ['solid', 'bordered', 'flat', 'faded', 'dot'] as const;
+    const variants = ['solid', 'bordered', 'flat', 'faded'] as const;
     
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
@@ -40,6 +40,13 @@ describe('Badge', () => {
         const badge = screen.getByText('Test');
         expect(badge).toHaveClass(`lui-badge--${variant}`);
       });
+    });
+
+    it('renders with dot variant', () => {
+      render(<Badge variant="dot">Test</Badge>);
+      const badge = document.querySelector('.lui-badge--dot');
+      expect(badge).toBeInTheDocument();
+      expect(badge).toHaveClass('lui-badge--dot');
     });
   });
 

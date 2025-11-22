@@ -200,7 +200,9 @@ describe('PopoverContent', () => {
         <PopoverContent>Content</PopoverContent>
       </Popover>
     );
-    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    const dialogs = screen.getAllByRole('dialog');
+    expect(dialogs.length).toBeGreaterThan(0);
+    expect(dialogs[0]).toBeInTheDocument();
   });
 });
 

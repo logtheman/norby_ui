@@ -85,12 +85,14 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
     const controlled = valueProp !== undefined;
     const value = controlled ? valueProp : internalValue;
 
-    const handleChange = (newValue: string) => {
+    const finalInvalid = isInvalid || !!errorMessage;
+
+    const handleChange = React.useCallback((newValue: string) => {
       if (!controlled) {
         setInternalValue(newValue);
       }
       onChange?.(newValue);
-    };
+    }, [controlled, onChange]);
 
     const contextValue = React.useMemo(
       () => ({
@@ -102,15 +104,15 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
         isDisabled,
         isRequired,
         isReadOnly,
-        isInvalid
+        isInvalid: finalInvalid
       }),
-      [name, value, handleChange, size, color, isDisabled, isRequired, isReadOnly, isInvalid]
+      [name, value, handleChange, size, color, isDisabled, isRequired, isReadOnly, finalInvalid]
     );
 
     const cls = cx(
       'lui-radio-group',
       `lui-radio-group--${orientation}`,
-      isInvalid && 'lui-radio-group--invalid',
+      finalInvalid && 'lui-radio-group--invalid',
       className
     );
 
@@ -124,10 +126,10 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
             </div>
           )}
           <div className="lui-radio-group__wrapper">{children}</div>
-          {description && !isInvalid && (
+          {description && !finalInvalid && (
             <div className="lui-radio-group__description">{description}</div>
           )}
-          {errorMessage && isInvalid && (
+          {errorMessage && finalInvalid && (
             <div className="lui-radio-group__error">{errorMessage}</div>
           )}
         </div>
@@ -166,7 +168,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     const inputId = React.useId();
     const descriptionId = description ? `${inputId}-description` : undefined;
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
       if (!finalReadOnly && !finalDisabled) {
         context.onChange?.(value);
       }

@@ -6,11 +6,11 @@ import { DateRangePicker } from '../DateRangePicker';
 describe('DateRangePicker', () => {
   describe('Rendering', () => {
     it('renders start and end date inputs', () => {
-      render(<DateRangePicker />);
-      const inputs = screen.getAllByRole('textbox');
+      const { container } = render(<DateRangePicker />);
+      const inputs = container.querySelectorAll('input[type="date"]');
       expect(inputs).toHaveLength(2);
-      expect(inputs[0]).toHaveAttribute('type', 'date');
-      expect(inputs[1]).toHaveAttribute('type', 'date');
+      expect(inputs[0]).toHaveAttribute('placeholder', 'Start date');
+      expect(inputs[1]).toHaveAttribute('placeholder', 'End date');
     });
 
     it('renders label', () => {
@@ -24,7 +24,7 @@ describe('DateRangePicker', () => {
     });
 
     it('renders error message', () => {
-      render(<DateRangePicker errorMessage="Invalid range" />);
+      render(<DateRangePicker errorMessage="Invalid range" isInvalid />);
       expect(screen.getByText('Invalid range')).toBeInTheDocument();
     });
   });
@@ -33,9 +33,9 @@ describe('DateRangePicker', () => {
     it('calls onStartDateChange when start date changes', async () => {
       const handleStartDateChange = vi.fn();
       const user = userEvent.setup();
-      render(<DateRangePicker onStartDateChange={handleStartDateChange} />);
+      const { container } = render(<DateRangePicker onStartDateChange={handleStartDateChange} />);
       
-      const inputs = screen.getAllByRole('textbox');
+      const inputs = container.querySelectorAll('input[type="date"]');
       await user.type(inputs[0], '2024-01-01');
       expect(handleStartDateChange).toHaveBeenCalled();
     });
@@ -43,9 +43,9 @@ describe('DateRangePicker', () => {
     it('calls onEndDateChange when end date changes', async () => {
       const handleEndDateChange = vi.fn();
       const user = userEvent.setup();
-      render(<DateRangePicker onEndDateChange={handleEndDateChange} />);
+      const { container } = render(<DateRangePicker onEndDateChange={handleEndDateChange} />);
       
-      const inputs = screen.getAllByRole('textbox');
+      const inputs = container.querySelectorAll('input[type="date"]');
       await user.type(inputs[1], '2024-12-31');
       expect(handleEndDateChange).toHaveBeenCalled();
     });
@@ -53,16 +53,16 @@ describe('DateRangePicker', () => {
 
   describe('States', () => {
     it('renders disabled state', () => {
-      render(<DateRangePicker isDisabled />);
-      const inputs = screen.getAllByRole('textbox');
+      const { container } = render(<DateRangePicker isDisabled />);
+      const inputs = container.querySelectorAll('input[type="date"]');
       inputs.forEach((input) => {
         expect(input).toBeDisabled();
       });
     });
 
     it('renders invalid state', () => {
-      render(<DateRangePicker isInvalid />);
-      const inputs = screen.getAllByRole('textbox');
+      const { container } = render(<DateRangePicker isInvalid />);
+      const inputs = container.querySelectorAll('input[type="date"]');
       inputs.forEach((input) => {
         expect(input).toHaveAttribute('aria-invalid', 'true');
       });

@@ -76,7 +76,7 @@ const TypographyComponent = React.forwardRef(
     }: PolymorphicTypographyProps<E>,
     ref: React.Ref<Element>
   ) => {
-    const Component = (as || 'p') as any;
+    const Component = (as || 'p') as React.ElementType;
     const cls = cx('lui-typography', `lui-typography--${variant}`, className);
 
     return (

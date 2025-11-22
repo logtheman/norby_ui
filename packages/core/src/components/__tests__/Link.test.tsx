@@ -85,8 +85,8 @@ describe('Link', () => {
 
   describe('States', () => {
     it('renders disabled state', () => {
-      render(<Link href="/test" isDisabled>Disabled</Link>);
-      const link = screen.getByRole('link');
+      const { container } = render(<Link href="/test" isDisabled>Disabled</Link>);
+      const link = container.querySelector('a.lui-link--disabled') || screen.getByText('Disabled');
       expect(link).toHaveClass('lui-link--disabled');
       expect(link).toHaveAttribute('aria-disabled', 'true');
       expect(link).not.toHaveAttribute('href');

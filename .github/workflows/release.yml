@@ -1,7 +1,7 @@
 name: Release
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 jobs:
   release:
     permissions:
@@ -15,10 +15,41 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-      - run: pnpm test
+      - name: Run tests
+        id: test
+        continue-on-error: true
+        run: |
+          pnpm test 2>&1 | tee test-output.txt
+          TEST_EXIT_CODE=${PIPESTATUS[0]}
+          echo "exit_code=$TEST_EXIT_CODE" >> $GITHUB_OUTPUT
+      - name: Upload test results
+        if: steps.test.outputs.exit_code != 0
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            test-output.txt
+            packages/core/coverage/
+          retention-days: 7
+      - name: Create test failure summary
+        if: steps.test.outputs.exit_code != 0
+        run: |
+          echo "## ❌ Test Failures" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Failed Tests:" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          grep -A 10 "FAIL\|×" test-output.txt | head -100 >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Full test output available in artifacts" >> $GITHUB_STEP_SUMMARY
+      - name: Fail if tests failed
+        if: steps.test.outputs.exit_code != 0
+        run: |
+          echo "Tests failed. Check artifacts for details."
+          exit 1
       - run: pnpm -w changeset version
       - run: pnpm -w publish --access public
         env:

@@ -1,4 +1,3 @@
-/* eslint-disable react-compiler/react-compiler */
 import * as React from 'react';
 
 type Placement =
@@ -136,18 +135,15 @@ export const Tooltip: React.FC<TooltipProps> = ({
     }
   }, [isOpen, updatePosition]);
 
+  // Create ref callback that doesn't access children.ref during render
+  const refCallback = React.useCallback((node: HTMLElement | null) => {
+    triggerRef.current = node;
+    // Note: We don't forward the original ref to avoid accessing refs during render
+    // If ref forwarding is needed, the child component should use React.forwardRef
+  }, []);
+  
   const trigger = React.cloneElement(children, {
-    ref: (node: HTMLElement | null) => {
-      triggerRef.current = node;
-      // Access the original ref only in the callback, not during render
-      const originalRef = React.isValidElement(children) ? (children as any).ref : undefined;
-      // Only forward function refs to avoid ESLint errors with object refs
-      if (typeof originalRef === 'function') {
-        originalRef(node);
-      }
-      // Note: Object refs are not forwarded to avoid modifying props
-      // If object ref forwarding is needed, use React.forwardRef in the child component
-    },
+    ref: refCallback,
     onMouseEnter: showTooltip,
     onMouseLeave: hideTooltip,
     onFocus: showTooltip,
