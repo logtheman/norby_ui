@@ -64,18 +64,28 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     },
     ref
   ) => {
+    const tabs: TabProps[] = [];
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child) && child.type === Tab) {
+        tabs.push(child.props as TabProps);
+      }
+    });
+
     const [internalSelectedKey, setInternalSelectedKey] = React.useState(
-      defaultSelectedKey || ''
+      defaultSelectedKey || tabs[0]?.id || ''
     );
     const controlled = selectedKeyProp !== undefined;
     const selectedKey = controlled ? selectedKeyProp : internalSelectedKey;
 
-    const handleSelectionChange = React.useCallback((key: string) => {
-      if (!controlled) {
-        setInternalSelectedKey(key);
-      }
-      onSelectionChange?.(key);
-    }, [controlled, onSelectionChange]);
+    const handleSelectionChange = React.useCallback(
+      (key: string) => {
+        if (!controlled) {
+          setInternalSelectedKey(key);
+        }
+        onSelectionChange?.(key);
+      },
+      [controlled, onSelectionChange]
+    );
 
     const contextValue = React.useMemo(
       () => ({
@@ -99,12 +109,10 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       className
     );
 
-    const tabs: TabProps[] = [];
     const panels: React.ReactNode[] = [];
 
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child) && child.type === Tab) {
-        tabs.push(child.props as TabProps);
         panels.push(child.props.children);
       }
     });
@@ -114,12 +122,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         <div ref={ref} className={cls} {...props}>
           <div className="lui-tabs__list" role="tablist">
             {tabs.map((tab, index) => (
-              <TabButton
-                key={tab.id}
-                tab={tab}
-                isSelected={selectedKey === tab.id}
-                index={index}
-              />
+              <TabButton key={tab.id} tab={tab} isSelected={selectedKey === tab.id} index={index} />
             ))}
           </div>
           <div className="lui-tabs__panels">
@@ -194,5 +197,3 @@ export const Tab = ({ children }: TabProps) => {
   return <>{children}</>;
 };
 Tab.displayName = 'Tab';
-
-

@@ -8,8 +8,12 @@ describe('Tabs', () => {
     it('renders tabs and panels', () => {
       render(
         <Tabs>
-          <Tab id="1" title="Tab 1">Content 1</Tab>
-          <Tab id="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">
+            Content 1
+          </Tab>
+          <Tab id="2" title="Tab 2">
+            Content 2
+          </Tab>
         </Tabs>
       );
       expect(screen.getByRole('tab', { name: /tab 1/i })).toBeInTheDocument();
@@ -20,7 +24,9 @@ describe('Tabs', () => {
     it('renders tablist', () => {
       render(
         <Tabs>
-          <Tab id="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">
+            Content
+          </Tab>
         </Tabs>
       );
       expect(screen.getByRole('tablist')).toBeInTheDocument();
@@ -29,7 +35,9 @@ describe('Tabs', () => {
     it('applies default classes', () => {
       render(
         <Tabs>
-          <Tab id="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">
+            Content
+          </Tab>
         </Tabs>
       );
       const tabs = screen.getByRole('tablist').closest('.lui-tabs');
@@ -43,14 +51,18 @@ describe('Tabs', () => {
       const user = userEvent.setup();
       render(
         <Tabs defaultSelectedKey="1">
-          <Tab id="1" title="Tab 1">Content 1</Tab>
-          <Tab id="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">
+            Content 1
+          </Tab>
+          <Tab id="2" title="Tab 2">
+            Content 2
+          </Tab>
         </Tabs>
       );
-      
+
       const tab1 = screen.getByRole('tab', { name: /tab 1/i });
       expect(tab1).toHaveAttribute('aria-selected', 'true');
-      
+
       await user.click(screen.getByRole('tab', { name: /tab 2/i }));
       expect(screen.getByRole('tab', { name: /tab 2/i })).toHaveAttribute('aria-selected', 'true');
     });
@@ -58,11 +70,15 @@ describe('Tabs', () => {
     it('works as controlled component', () => {
       render(
         <Tabs selectedKey="1">
-          <Tab id="1" title="Tab 1">Content 1</Tab>
-          <Tab id="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">
+            Content 1
+          </Tab>
+          <Tab id="2" title="Tab 2">
+            Content 2
+          </Tab>
         </Tabs>
       );
-      
+
       expect(screen.getByRole('tab', { name: /tab 1/i })).toHaveAttribute('aria-selected', 'true');
     });
   });
@@ -73,11 +89,15 @@ describe('Tabs', () => {
       const user = userEvent.setup();
       render(
         <Tabs onSelectionChange={handleSelectionChange}>
-          <Tab id="1" title="Tab 1">Content 1</Tab>
-          <Tab id="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">
+            Content 1
+          </Tab>
+          <Tab id="2" title="Tab 2">
+            Content 2
+          </Tab>
         </Tabs>
       );
-      
+
       await user.click(screen.getByRole('tab', { name: /tab 2/i }));
       expect(handleSelectionChange).toHaveBeenCalledWith('2');
     });
@@ -86,13 +106,17 @@ describe('Tabs', () => {
       const user = userEvent.setup();
       render(
         <Tabs>
-          <Tab id="1" title="Tab 1">Content 1</Tab>
-          <Tab id="2" title="Tab 2">Content 2</Tab>
+          <Tab id="1" title="Tab 1">
+            Content 1
+          </Tab>
+          <Tab id="2" title="Tab 2">
+            Content 2
+          </Tab>
         </Tabs>
       );
-      
+
       expect(screen.getByText('Content 1')).toBeInTheDocument();
-      
+
       await user.click(screen.getByRole('tab', { name: /tab 2/i }));
       expect(screen.getByText('Content 2')).toBeInTheDocument();
     });
@@ -100,12 +124,14 @@ describe('Tabs', () => {
 
   describe('Variants', () => {
     const variants = ['solid', 'bordered', 'light', 'underlined'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(
           <Tabs variant={variant}>
-            <Tab id="1" title="Tab 1">Content</Tab>
+            <Tab id="1" title="Tab 1">
+              Content
+            </Tab>
           </Tabs>
         );
         const tab = screen.getByRole('tab');
@@ -116,12 +142,14 @@ describe('Tabs', () => {
 
   describe('Placement', () => {
     const placements = ['top', 'bottom', 'start', 'end'] as const;
-    
+
     placements.forEach((placement) => {
       it(`renders with ${placement} placement`, () => {
         render(
           <Tabs placement={placement}>
-            <Tab id="1" title="Tab 1">Content</Tab>
+            <Tab id="1" title="Tab 1">
+              Content
+            </Tab>
           </Tabs>
         );
         const tabs = screen.getByRole('tablist').closest('.lui-tabs');
@@ -134,7 +162,9 @@ describe('Tabs', () => {
     it('disables all tabs when group is disabled', () => {
       render(
         <Tabs isDisabled>
-          <Tab id="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">
+            Content
+          </Tab>
         </Tabs>
       );
       expect(screen.getByRole('tab')).toBeDisabled();
@@ -143,7 +173,9 @@ describe('Tabs', () => {
     it('disables individual tab', () => {
       render(
         <Tabs>
-          <Tab id="1" title="Tab 1" isDisabled>Content</Tab>
+          <Tab id="1" title="Tab 1" isDisabled>
+            Content
+          </Tab>
         </Tabs>
       );
       expect(screen.getByRole('tab')).toBeDisabled();
@@ -154,7 +186,9 @@ describe('Tabs', () => {
     it('has proper ARIA attributes', () => {
       render(
         <Tabs defaultSelectedKey="1">
-          <Tab id="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">
+            Content
+          </Tab>
         </Tabs>
       );
       const tab = screen.getByRole('tab');
@@ -166,12 +200,12 @@ describe('Tabs', () => {
       const ref = vi.fn();
       render(
         <Tabs ref={ref}>
-          <Tab id="1" title="Tab 1">Content</Tab>
+          <Tab id="1" title="Tab 1">
+            Content
+          </Tab>
         </Tabs>
       );
       expect(ref).toHaveBeenCalled();
     });
   });
 });
-
-

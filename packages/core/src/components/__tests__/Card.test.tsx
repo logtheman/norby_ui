@@ -27,7 +27,7 @@ describe('Card', () => {
 
   describe('Variants', () => {
     const variants = ['flat', 'bordered', 'shadow'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(<Card variant={variant}>Test</Card>);
@@ -39,7 +39,7 @@ describe('Card', () => {
 
   describe('Radius', () => {
     const radii = ['none', 'sm', 'md', 'lg', 'full'] as const;
-    
+
     radii.forEach((radius) => {
       it(`renders with ${radius} radius`, () => {
         render(<Card radius={radius}>Test</Card>);
@@ -67,8 +67,12 @@ describe('Card', () => {
     it('calls onClick when pressable', async () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
-      render(<Card isPressable onClick={handleClick}>Pressable</Card>);
-      
+      render(
+        <Card isPressable onClick={handleClick}>
+          Pressable
+        </Card>
+      );
+
       await user.click(screen.getByRole('button'));
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
@@ -153,5 +157,3 @@ describe('CardFooter', () => {
     expect(footer).toHaveClass('lui-card__footer');
   });
 });
-
-

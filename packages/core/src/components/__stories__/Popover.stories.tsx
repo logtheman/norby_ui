@@ -9,7 +9,16 @@ const meta: Meta<typeof Popover> = {
   argTypes: {
     placement: {
       control: 'select',
-      options: ['top', 'bottom', 'left', 'right', 'top-start', 'top-end', 'bottom-start', 'bottom-end']
+      options: [
+        'top',
+        'bottom',
+        'left',
+        'right',
+        'top-start',
+        'top-end',
+        'bottom-start',
+        'bottom-end'
+      ]
     }
   }
 };
@@ -36,7 +45,15 @@ export const Default: Story = {
 
 export const Placements: Story = {
   render: () => (
-    <div style={{ padding: '4rem', display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
+    <div
+      style={{
+        padding: '4rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2rem',
+        alignItems: 'center'
+      }}
+    >
       <Popover placement="top">
         <PopoverTrigger>
           <Button>Top</Button>
@@ -82,5 +99,3 @@ export const Placements: Story = {
     </div>
   )
 };
-
-

@@ -28,14 +28,22 @@ describe('Link', () => {
 
   describe('External Links', () => {
     it('adds external link attributes when isExternal is true', () => {
-      render(<Link href="https://example.com" isExternal>External</Link>);
+      render(
+        <Link href="https://example.com" isExternal>
+          External
+        </Link>
+      );
       const link = screen.getByRole('link');
       expect(link).toHaveAttribute('target', '_blank');
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
     });
 
     it('shows anchor icon when showAnchorIcon is true', () => {
-      render(<Link href="/test" showAnchorIcon>Link</Link>);
+      render(
+        <Link href="/test" showAnchorIcon>
+          Link
+        </Link>
+      );
       const icon = document.querySelector('.lui-link__anchor-icon');
       expect(icon).toBeInTheDocument();
     });
@@ -52,10 +60,14 @@ describe('Link', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
-        render(<Link href="/test" size={size}>Test</Link>);
+        render(
+          <Link href="/test" size={size}>
+            Test
+          </Link>
+        );
         expect(screen.getByRole('link')).toHaveClass(`lui-link--${size}`);
       });
     });
@@ -63,10 +75,14 @@ describe('Link', () => {
 
   describe('Colors', () => {
     const colors = ['foreground', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
-        render(<Link href="/test" color={color}>Test</Link>);
+        render(
+          <Link href="/test" color={color}>
+            Test
+          </Link>
+        );
         expect(screen.getByRole('link')).toHaveClass(`lui-link--${color}`);
       });
     });
@@ -74,10 +90,14 @@ describe('Link', () => {
 
   describe('Underline', () => {
     const underlines = ['none', 'hover', 'always', 'active', 'focus'] as const;
-    
+
     underlines.forEach((underline) => {
       it(`renders with ${underline} underline`, () => {
-        render(<Link href="/test" underline={underline}>Test</Link>);
+        render(
+          <Link href="/test" underline={underline}>
+            Test
+          </Link>
+        );
         expect(screen.getByRole('link')).toHaveClass(`lui-link--underline-${underline}`);
       });
     });
@@ -85,7 +105,11 @@ describe('Link', () => {
 
   describe('States', () => {
     it('renders disabled state', () => {
-      const { container } = render(<Link href="/test" isDisabled>Disabled</Link>);
+      const { container } = render(
+        <Link href="/test" isDisabled>
+          Disabled
+        </Link>
+      );
       const link = container.querySelector('a.lui-link--disabled') || screen.getByText('Disabled');
       expect(link).toHaveClass('lui-link--disabled');
       expect(link).toHaveAttribute('aria-disabled', 'true');
@@ -93,7 +117,11 @@ describe('Link', () => {
     });
 
     it('renders block state', () => {
-      render(<Link href="/test" isBlock>Block</Link>);
+      render(
+        <Link href="/test" isBlock>
+          Block
+        </Link>
+      );
       expect(screen.getByRole('link')).toHaveClass('lui-link--block');
     });
   });
@@ -101,10 +129,12 @@ describe('Link', () => {
   describe('Accessibility', () => {
     it('forwards ref correctly', () => {
       const ref = vi.fn();
-      render(<Link ref={ref} href="/test">Test</Link>);
+      render(
+        <Link ref={ref} href="/test">
+          Test
+        </Link>
+      );
       expect(ref).toHaveBeenCalled();
     });
   });
 });
-
-

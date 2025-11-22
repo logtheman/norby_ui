@@ -67,13 +67,7 @@ function cx(...classes: Array<string | false | null | undefined>) {
 
 const TypographyComponent = React.forwardRef(
   <E extends React.ElementType = 'p'>(
-    {
-      variant = 'bodyRegular',
-      as,
-      className,
-      children,
-      ...rest
-    }: PolymorphicTypographyProps<E>,
+    { variant = 'bodyRegular', as, className, children, ...rest }: PolymorphicTypographyProps<E>,
     ref: React.Ref<Element>
   ) => {
     const Component = (as || 'p') as React.ElementType;
@@ -94,5 +88,3 @@ export const Typography = TypographyComponent as <E extends React.ElementType = 
 ) => React.ReactElement | null;
 
 export type TypographyProps<E extends React.ElementType = 'p'> = PolymorphicTypographyProps<E>;
-
-

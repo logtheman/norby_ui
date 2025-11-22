@@ -194,16 +194,15 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
 
       const padding = 8;
       left = Math.max(padding, Math.min(left, window.innerWidth - contentRect.width - padding));
-      top = Math.max(padding, Math.min(top, window.innerHeight + scrollY - contentRect.height - padding));
+      top = Math.max(
+        padding,
+        Math.min(top, window.innerHeight + scrollY - contentRect.height - padding)
+      );
 
       setPosition({ top, left });
     }, [placement]);
 
-    const cls = cx(
-      'lui-popover',
-      `lui-popover--radius-${radius}`,
-      className
-    );
+    const cls = cx('lui-popover', `lui-popover--radius-${radius}`, className);
 
     return (
       <div
@@ -231,5 +230,3 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
   }
 );
 PopoverContent.displayName = 'PopoverContent';
-
-

@@ -75,9 +75,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           </label>
         )}
         <div className={wrapperClasses}>
-          {startContent && (
-            <span className="lui-select__start-content">{startContent}</span>
-          )}
+          {startContent && <span className="lui-select__start-content">{startContent}</span>}
           <select
             ref={ref}
             id={selectId}
@@ -125,5 +123,3 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   }
 );
 Select.displayName = 'Select';
-
-

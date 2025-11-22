@@ -59,5 +59,3 @@ export const WithError: S = {
     </Select>
   )
 };
-
-

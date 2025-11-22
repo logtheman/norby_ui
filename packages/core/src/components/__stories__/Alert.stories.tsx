@@ -65,18 +65,10 @@ export const Colors: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Alert
-        color="success"
-        title="Success"
-        startContent="✓"
-      >
+      <Alert color="success" title="Success" startContent="✓">
         Your changes have been saved successfully.
       </Alert>
-      <Alert
-        color="danger"
-        title="Error"
-        startContent="✕"
-      >
+      <Alert color="danger" title="Error" startContent="✕">
         Something went wrong. Please try again.
       </Alert>
     </div>
@@ -84,11 +76,5 @@ export const WithIcons: Story = {
 };
 
 export const WithoutTitle: Story = {
-  render: () => (
-    <Alert color="primary">
-      This alert doesn't have a title, just a message.
-    </Alert>
-  )
+  render: () => <Alert color="primary">This alert doesn't have a title, just a message.</Alert>
 };
-
-

@@ -15,11 +15,16 @@ function cx(...classes: Array<string | false | null | undefined>) {
 
 export const Divider = React.forwardRef<HTMLHRElement, DividerProps>(
   ({ orientation = 'horizontal', color = 'default', className, ...props }, ref) => {
-    const cls = cx('lui-divider', `lui-divider--${orientation}`, `lui-divider--${color}`, className);
+    const cls = cx(
+      'lui-divider',
+      `lui-divider--${orientation}`,
+      `lui-divider--${color}`,
+      className
+    );
 
-    return <hr ref={ref} className={cls} role="separator" aria-orientation={orientation} {...props} />;
+    return (
+      <hr ref={ref} className={cls} role="separator" aria-orientation={orientation} {...props} />
+    );
   }
 );
 Divider.displayName = 'Divider';
-
-

@@ -8,7 +8,16 @@ const meta: Meta<typeof Tooltip> = {
   argTypes: {
     placement: {
       control: 'select',
-      options: ['top', 'bottom', 'left', 'right', 'top-start', 'top-end', 'bottom-start', 'bottom-end']
+      options: [
+        'top',
+        'bottom',
+        'left',
+        'right',
+        'top-start',
+        'top-end',
+        'bottom-start',
+        'bottom-end'
+      ]
     },
     color: {
       control: 'select',
@@ -22,7 +31,9 @@ type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
   render: (args) => (
-    <div style={{ padding: '4rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div
+      style={{ padding: '4rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+    >
       <Tooltip {...args} content="This is a tooltip">
         <Button>Hover me</Button>
       </Tooltip>
@@ -32,7 +43,15 @@ export const Default: Story = {
 
 export const Placements: Story = {
   render: () => (
-    <div style={{ padding: '4rem', display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
+    <div
+      style={{
+        padding: '4rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2rem',
+        alignItems: 'center'
+      }}
+    >
       <Tooltip content="Top tooltip" placement="top">
         <Button>Top</Button>
       </Tooltip>
@@ -72,5 +91,3 @@ export const Colors: Story = {
     </div>
   )
 };
-
-

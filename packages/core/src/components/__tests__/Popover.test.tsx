@@ -42,7 +42,7 @@ describe('Popover', () => {
           <PopoverContent>Content</PopoverContent>
         </Popover>
       );
-      
+
       await user.click(screen.getByRole('button', { name: /trigger/i }));
       expect(screen.getByText('Content')).toBeInTheDocument();
     });
@@ -56,9 +56,9 @@ describe('Popover', () => {
           <PopoverContent>Content</PopoverContent>
         </Popover>
       );
-      
+
       expect(screen.queryByText('Content')).not.toBeInTheDocument();
-      
+
       rerender(
         <Popover isOpen={true}>
           <PopoverTrigger>
@@ -82,11 +82,11 @@ describe('Popover', () => {
           <PopoverContent>Content</PopoverContent>
         </Popover>
       );
-      
+
       const trigger = screen.getByRole('button', { name: /trigger/i });
       await user.click(trigger);
       expect(screen.getByText('Content')).toBeInTheDocument();
-      
+
       await user.click(trigger);
       expect(screen.queryByText('Content')).not.toBeInTheDocument();
     });
@@ -102,7 +102,7 @@ describe('Popover', () => {
           <PopoverContent>Content</PopoverContent>
         </Popover>
       );
-      
+
       await user.click(screen.getByRole('button', { name: /trigger/i }));
       expect(handleOpenChange).toHaveBeenCalled();
     });
@@ -118,7 +118,7 @@ describe('Popover', () => {
           <PopoverContent>Content</PopoverContent>
         </Popover>
       );
-      
+
       await user.keyboard('{Escape}');
       expect(handleOpenChange).toHaveBeenCalledWith(false);
     });
@@ -126,7 +126,7 @@ describe('Popover', () => {
 
   describe('Placement', () => {
     const placements = ['top', 'bottom', 'left', 'right', 'top-start', 'top-end'] as const;
-    
+
     placements.forEach((placement) => {
       it(`renders with ${placement} placement`, () => {
         render(
@@ -154,10 +154,10 @@ describe('Popover', () => {
           <PopoverContent>Content</PopoverContent>
         </Popover>
       );
-      
+
       const trigger = screen.getByRole('button', { name: /trigger/i });
       expect(trigger).toHaveAttribute('aria-expanded', 'false');
-      
+
       await user.click(trigger);
       expect(trigger).toHaveAttribute('aria-expanded', 'true');
     });
@@ -171,7 +171,7 @@ describe('Popover', () => {
           <PopoverContent>Content</PopoverContent>
         </Popover>
       );
-      
+
       const trigger = screen.getByRole('button', { name: /trigger/i });
       expect(trigger).toHaveAttribute('aria-haspopup', 'true');
     });
@@ -205,5 +205,3 @@ describe('PopoverContent', () => {
     expect(dialogs[0]).toBeInTheDocument();
   });
 });
-
-

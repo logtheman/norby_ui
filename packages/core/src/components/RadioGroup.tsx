@@ -87,12 +87,15 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
 
     const finalInvalid = isInvalid || !!errorMessage;
 
-    const handleChange = React.useCallback((newValue: string) => {
-      if (!controlled) {
-        setInternalValue(newValue);
-      }
-      onChange?.(newValue);
-    }, [controlled, onChange]);
+    const handleChange = React.useCallback(
+      (newValue: string) => {
+        if (!controlled) {
+          setInternalValue(newValue);
+        }
+        onChange?.(newValue);
+      },
+      [controlled, onChange]
+    );
 
     const contextValue = React.useMemo(
       () => ({
@@ -218,5 +221,3 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   }
 );
 Radio.displayName = 'Radio';
-
-

@@ -1,6 +1,18 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+echo "✨ Checking code formatting..."
+pnpm format:check || {
+  echo "❌ Code formatting issues found. Run 'pnpm format' to fix."
+  exit 1
+}
+
+echo "🧪 Running tests..."
+pnpm test || {
+  echo "❌ Tests failed. Please fix failing tests before pushing."
+  exit 1
+}
+
 echo "🔍 Running type check..."
 pnpm type-check || {
   echo "❌ Type check failed. Please fix type errors before pushing."
@@ -14,4 +26,3 @@ pnpm lint --max-warnings=100 || {
 }
 
 echo "✅ All checks passed!"
-

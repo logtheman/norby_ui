@@ -40,7 +40,7 @@ describe('TimeInput', () => {
       const handleChange = vi.fn();
       const user = userEvent.setup();
       render(<TimeInput onChange={handleChange} />);
-      
+
       const input = document.querySelector('input[type="time"]') as HTMLInputElement;
       await user.type(input, '12:00');
       expect(handleChange).toHaveBeenCalled();
@@ -49,7 +49,7 @@ describe('TimeInput', () => {
 
   describe('Variants', () => {
     const variants = ['flat', 'bordered', 'faded', 'underlined'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(<TimeInput variant={variant} />);
@@ -61,7 +61,7 @@ describe('TimeInput', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<TimeInput size={size} />);
@@ -119,4 +119,3 @@ describe('TimeInput', () => {
     });
   });
 });
-

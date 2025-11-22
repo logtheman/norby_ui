@@ -61,7 +61,7 @@ describe('Select', () => {
           <option value="2">Option 2</option>
         </Select>
       );
-      
+
       const select = screen.getByRole('combobox');
       await user.selectOptions(select, '2');
       expect(handleChange).toHaveBeenCalled();
@@ -75,7 +75,7 @@ describe('Select', () => {
           <option value="2">Option 2</option>
         </Select>
       );
-      
+
       const select = screen.getByRole('combobox') as HTMLSelectElement;
       await user.selectOptions(select, '2');
       expect(select.value).toBe('2');
@@ -84,7 +84,7 @@ describe('Select', () => {
 
   describe('Variants', () => {
     const variants = ['flat', 'bordered', 'faded', 'underlined'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(
@@ -100,7 +100,7 @@ describe('Select', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(
@@ -116,7 +116,7 @@ describe('Select', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(
@@ -227,5 +227,3 @@ describe('Select', () => {
     });
   });
 });
-
-

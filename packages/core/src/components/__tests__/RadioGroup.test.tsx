@@ -53,7 +53,7 @@ describe('RadioGroup', () => {
           <Radio value="2">Option 2</Radio>
         </RadioGroup>
       );
-      
+
       const radio1 = screen.getByRole('radio', { name: /option 1/i });
       await user.click(radio1);
       expect(radio1).toBeChecked();
@@ -66,7 +66,7 @@ describe('RadioGroup', () => {
           <Radio value="2">Option 2</Radio>
         </RadioGroup>
       );
-      
+
       expect(screen.getByRole('radio', { name: /option 1/i })).toBeChecked();
       expect(screen.getByRole('radio', { name: /option 2/i })).not.toBeChecked();
     });
@@ -82,7 +82,7 @@ describe('RadioGroup', () => {
           <Radio value="2">Option 2</Radio>
         </RadioGroup>
       );
-      
+
       await user.click(screen.getByRole('radio', { name: /option 2/i }));
       expect(handleChange).toHaveBeenCalledWith('2');
     });
@@ -96,10 +96,10 @@ describe('RadioGroup', () => {
           <Radio value="3">Option 3</Radio>
         </RadioGroup>
       );
-      
+
       await user.click(screen.getByRole('radio', { name: /option 1/i }));
       expect(screen.getByRole('radio', { name: /option 1/i })).toBeChecked();
-      
+
       await user.click(screen.getByRole('radio', { name: /option 2/i }));
       expect(screen.getByRole('radio', { name: /option 1/i })).not.toBeChecked();
       expect(screen.getByRole('radio', { name: /option 2/i })).toBeChecked();
@@ -185,7 +185,9 @@ describe('Radio', () => {
     it('renders description', () => {
       render(
         <RadioGroup>
-          <Radio value="1" description="Helper text">Label</Radio>
+          <Radio value="1" description="Helper text">
+            Label
+          </Radio>
         </RadioGroup>
       );
       expect(screen.getByText('Helper text')).toBeInTheDocument();
@@ -207,7 +209,9 @@ describe('Radio', () => {
     it('renders disabled state', () => {
       render(
         <RadioGroup>
-          <Radio value="1" isDisabled>Disabled</Radio>
+          <Radio value="1" isDisabled>
+            Disabled
+          </Radio>
         </RadioGroup>
       );
       const radio = screen.getByRole('radio');
@@ -218,7 +222,9 @@ describe('Radio', () => {
     it('renders read-only state', () => {
       render(
         <RadioGroup>
-          <Radio value="1" isReadOnly>Read Only</Radio>
+          <Radio value="1" isReadOnly>
+            Read Only
+          </Radio>
         </RadioGroup>
       );
       const radio = screen.getByRole('radio');
@@ -229,7 +235,9 @@ describe('Radio', () => {
     it('renders invalid state', () => {
       render(
         <RadioGroup>
-          <Radio value="1" isInvalid>Invalid</Radio>
+          <Radio value="1" isInvalid>
+            Invalid
+          </Radio>
         </RadioGroup>
       );
       const radio = screen.getByRole('radio');
@@ -240,7 +248,7 @@ describe('Radio', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(
@@ -256,7 +264,7 @@ describe('Radio', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(
@@ -275,12 +283,12 @@ describe('Radio', () => {
       const ref = vi.fn();
       render(
         <RadioGroup>
-          <Radio ref={ref} value="1">Test</Radio>
+          <Radio ref={ref} value="1">
+            Test
+          </Radio>
         </RadioGroup>
       );
       expect(ref).toHaveBeenCalled();
     });
   });
 });
-
-

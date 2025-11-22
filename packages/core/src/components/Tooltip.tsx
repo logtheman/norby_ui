@@ -100,7 +100,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
     // Keep tooltip within viewport
     const padding = 8;
     left = Math.max(padding, Math.min(left, window.innerWidth - tooltipRect.width - padding));
-    top = Math.max(padding, Math.min(top, window.innerHeight + scrollY - tooltipRect.height - padding));
+    top = Math.max(
+      padding,
+      Math.min(top, window.innerHeight + scrollY - tooltipRect.height - padding)
+    );
 
     setPosition({ top, left });
   }, [placement]);
@@ -110,9 +113,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       setIsOpen(true);
-      setTimeout(updatePosition, 0);
     }, delay);
-  }, [isDisabled, delay, updatePosition]);
+  }, [isDisabled, delay]);
 
   const hideTooltip = React.useCallback(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -122,32 +124,94 @@ export const Tooltip: React.FC<TooltipProps> = ({
   }, [closeDelay]);
 
   React.useEffect(() => {
-    if (isOpen) {
-      updatePosition();
+    if (isOpen && tooltipRef.current) {
+      // Use setTimeout to ensure DOM is updated and tooltip has dimensions
+      const positionTimeout = setTimeout(() => {
+        if (tooltipRef.current) {
+          const rect = tooltipRef.current.getBoundingClientRect();
+          // Only update position if tooltip has dimensions (is rendered)
+          if (rect.width > 0 || rect.height > 0) {
+            updatePosition();
+          } else {
+            // Retry if tooltip doesn't have dimensions yet
+            requestAnimationFrame(() => {
+              updatePosition();
+            });
+          }
+        }
+      }, 0);
+
       const handleScroll = () => updatePosition();
       const handleResize = () => updatePosition();
       window.addEventListener('scroll', handleScroll, true);
       window.addEventListener('resize', handleResize);
       return () => {
+        clearTimeout(positionTimeout);
         window.removeEventListener('scroll', handleScroll, true);
         window.removeEventListener('resize', handleResize);
       };
     }
   }, [isOpen, updatePosition]);
 
-  // Create ref callback that doesn't access children.ref during render
-  const refCallback = React.useCallback((node: HTMLElement | null) => {
-    triggerRef.current = node;
-    // Note: We don't forward the original ref to avoid accessing refs during render
-    // If ref forwarding is needed, the child component should use React.forwardRef
-  }, []);
-  
+  // Create ref callback that merges with existing ref
+  const refCallback = React.useCallback(
+    (node: HTMLElement | null) => {
+      triggerRef.current = node;
+      // Forward ref to child if it has one
+      if (children && typeof children === 'object' && 'ref' in children) {
+        const childRef = (children as any).ref;
+        if (typeof childRef === 'function') {
+          childRef(node);
+        } else if (childRef) {
+          (childRef as React.MutableRefObject<HTMLElement | null>).current = node;
+        }
+      }
+    },
+    [children]
+  );
+
+  // Attach event handlers directly to DOM element for better compatibility with tests
+  React.useEffect(() => {
+    const element = triggerRef.current;
+    if (!element) return;
+
+    const handleMouseEnter = () => showTooltip();
+    const handleMouseLeave = () => hideTooltip();
+    const handleFocus = () => showTooltip();
+    const handleBlur = () => hideTooltip();
+
+    element.addEventListener('mouseenter', handleMouseEnter);
+    element.addEventListener('mouseleave', handleMouseLeave);
+    element.addEventListener('focus', handleFocus);
+    element.addEventListener('blur', handleBlur);
+
+    return () => {
+      element.removeEventListener('mouseenter', handleMouseEnter);
+      element.removeEventListener('mouseleave', handleMouseLeave);
+      element.removeEventListener('focus', handleFocus);
+      element.removeEventListener('blur', handleBlur);
+    };
+  }, [showTooltip, hideTooltip]);
+
+  // Merge event handlers with existing ones for React synthetic events
   const trigger = React.cloneElement(children, {
     ref: refCallback,
-    onMouseEnter: showTooltip,
-    onMouseLeave: hideTooltip,
-    onFocus: showTooltip,
-    onBlur: hideTooltip
+    onMouseEnter: (e: React.MouseEvent) => {
+      (children.props as any).onMouseEnter?.(e);
+      showTooltip();
+    },
+    onMouseLeave: (e: React.MouseEvent) => {
+      (children.props as any).onMouseLeave?.(e);
+      hideTooltip();
+    },
+    onFocus: (e: React.FocusEvent) => {
+      (children.props as any).onFocus?.(e);
+      showTooltip();
+    },
+    onBlur: (e: React.FocusEvent) => {
+      (children.props as any).onBlur?.(e);
+      hideTooltip();
+    }
   });
 
   const cls = cx(
@@ -183,5 +247,3 @@ export const Tooltip: React.FC<TooltipProps> = ({
 };
 
 Tooltip.displayName = 'Tooltip';
-
-

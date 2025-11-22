@@ -76,7 +76,7 @@ describe('Progress', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<Progress value={50} size={size} />);
@@ -87,7 +87,7 @@ describe('Progress', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Progress value={50} color={color} />);
@@ -155,5 +155,3 @@ describe('CircularProgress', () => {
     });
   });
 });
-
-

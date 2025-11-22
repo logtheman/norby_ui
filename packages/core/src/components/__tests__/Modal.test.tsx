@@ -58,9 +58,9 @@ describe('Modal', () => {
           <ModalContent>Content</ModalContent>
         </Modal>
       );
-      
+
       expect(screen.getByRole('dialog')).toBeInTheDocument();
-      
+
       rerender(
         <Modal isOpen={false}>
           <ModalContent>Content</ModalContent>
@@ -79,7 +79,7 @@ describe('Modal', () => {
           <ModalContent>Content</ModalContent>
         </Modal>
       );
-      
+
       const backdrop = document.querySelector('.lui-modal__backdrop');
       await user.click(backdrop!);
       expect(handleOpenChange).toHaveBeenCalledWith(false);
@@ -93,7 +93,7 @@ describe('Modal', () => {
           <ModalContent>Content</ModalContent>
         </Modal>
       );
-      
+
       const backdrop = document.querySelector('.lui-modal__backdrop');
       await user.click(backdrop!);
       expect(handleOpenChange).not.toHaveBeenCalled();
@@ -107,7 +107,7 @@ describe('Modal', () => {
           <ModalContent>Content</ModalContent>
         </Modal>
       );
-      
+
       await user.keyboard('{Escape}');
       expect(handleOpenChange).toHaveBeenCalledWith(false);
     });
@@ -120,7 +120,7 @@ describe('Modal', () => {
           <ModalContent>Content</ModalContent>
         </Modal>
       );
-      
+
       await user.keyboard('{Escape}');
       expect(handleOpenChange).not.toHaveBeenCalled();
     });
@@ -142,9 +142,9 @@ describe('Modal', () => {
           <ModalContent>Content</ModalContent>
         </Modal>
       );
-      
+
       expect(document.body.style.overflow).toBe('hidden');
-      
+
       unmount();
       expect(document.body.style.overflow).toBe('');
     });
@@ -152,7 +152,7 @@ describe('Modal', () => {
 
   describe('Sizes', () => {
     const sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'full'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(
@@ -168,7 +168,7 @@ describe('Modal', () => {
 
   describe('Placement', () => {
     const placements = ['center', 'top', 'bottom', 'auto'] as const;
-    
+
     placements.forEach((placement) => {
       it(`renders with ${placement} placement`, () => {
         render(
@@ -209,7 +209,7 @@ describe('Modal', () => {
           <ModalContent>Content</ModalContent>
         </Modal>
       );
-      
+
       await user.click(screen.getByLabelText('Close'));
       expect(handleOpenChange).toHaveBeenCalledWith(false);
     });
@@ -274,4 +274,3 @@ describe('ModalFooter', () => {
     expect(screen.getByText('Footer')).toBeInTheDocument();
   });
 });
-

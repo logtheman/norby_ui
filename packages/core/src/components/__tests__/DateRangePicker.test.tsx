@@ -34,7 +34,7 @@ describe('DateRangePicker', () => {
       const handleStartDateChange = vi.fn();
       const user = userEvent.setup();
       const { container } = render(<DateRangePicker onStartDateChange={handleStartDateChange} />);
-      
+
       const inputs = container.querySelectorAll('input[type="date"]');
       await user.type(inputs[0], '2024-01-01');
       expect(handleStartDateChange).toHaveBeenCalled();
@@ -44,7 +44,7 @@ describe('DateRangePicker', () => {
       const handleEndDateChange = vi.fn();
       const user = userEvent.setup();
       const { container } = render(<DateRangePicker onEndDateChange={handleEndDateChange} />);
-      
+
       const inputs = container.querySelectorAll('input[type="date"]');
       await user.type(inputs[1], '2024-12-31');
       expect(handleEndDateChange).toHaveBeenCalled();
@@ -77,5 +77,3 @@ describe('DateRangePicker', () => {
     });
   });
 });
-
-

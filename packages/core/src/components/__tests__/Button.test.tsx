@@ -17,7 +17,11 @@ describe('Button', () => {
     });
 
     it('renders as custom element when as prop is provided', () => {
-      render(<Button as="a" href="/test">Link Button</Button>);
+      render(
+        <Button as="a" href="/test">
+          Link Button
+        </Button>
+      );
       const element = screen.getByRole('link', { name: /link button/i });
       expect(element.tagName).toBe('A');
       expect(element).toHaveAttribute('href', '/test');
@@ -42,7 +46,7 @@ describe('Button', () => {
 
   describe('Variants', () => {
     const variants = ['solid', 'bordered', 'light', 'flat', 'faded', 'shadow', 'ghost'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(<Button variant={variant}>Test</Button>);
@@ -54,7 +58,7 @@ describe('Button', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Button color={color}>Test</Button>);
@@ -66,7 +70,7 @@ describe('Button', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<Button size={size}>Test</Button>);
@@ -78,7 +82,7 @@ describe('Button', () => {
 
   describe('Radius', () => {
     const radii = ['none', 'sm', 'md', 'lg', 'full'] as const;
-    
+
     radii.forEach((radius) => {
       it(`renders with ${radius} radius`, () => {
         render(<Button radius={radius}>Test</Button>);
@@ -183,7 +187,11 @@ describe('Button', () => {
     });
 
     it('renders custom spinner', () => {
-      render(<Button isLoading spinner={<span>Custom Spinner</span>}>Button</Button>);
+      render(
+        <Button isLoading spinner={<span>Custom Spinner</span>}>
+          Button
+        </Button>
+      );
       expect(screen.getByText('Custom Spinner')).toBeInTheDocument();
     });
   });
@@ -193,7 +201,7 @@ describe('Button', () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
       render(<Button onClick={handleClick}>Click me</Button>);
-      
+
       await user.click(screen.getByRole('button'));
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
@@ -201,8 +209,12 @@ describe('Button', () => {
     it('does not call onClick when disabled', async () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
-      render(<Button isDisabled onClick={handleClick}>Disabled</Button>);
-      
+      render(
+        <Button isDisabled onClick={handleClick}>
+          Disabled
+        </Button>
+      );
+
       await user.click(screen.getByRole('button'));
       expect(handleClick).not.toHaveBeenCalled();
     });
@@ -210,8 +222,12 @@ describe('Button', () => {
     it('does not call onClick when loading', async () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
-      render(<Button isLoading onClick={handleClick}>Loading</Button>);
-      
+      render(
+        <Button isLoading onClick={handleClick}>
+          Loading
+        </Button>
+      );
+
       await user.click(screen.getByRole('button'));
       expect(handleClick).not.toHaveBeenCalled();
     });

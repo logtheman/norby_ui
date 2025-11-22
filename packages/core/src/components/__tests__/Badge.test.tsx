@@ -33,7 +33,7 @@ describe('Badge', () => {
 
   describe('Variants', () => {
     const variants = ['solid', 'bordered', 'flat', 'faded'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(<Badge variant={variant}>Test</Badge>);
@@ -66,7 +66,7 @@ describe('Badge', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Badge color={color}>Test</Badge>);
@@ -77,7 +77,7 @@ describe('Badge', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<Badge size={size}>Test</Badge>);
@@ -88,7 +88,7 @@ describe('Badge', () => {
 
   describe('Radius', () => {
     const radii = ['none', 'sm', 'md', 'lg', 'full'] as const;
-    
+
     radii.forEach((radius) => {
       it(`renders with ${radius} radius`, () => {
         render(<Badge radius={radius}>Test</Badge>);
@@ -119,5 +119,3 @@ describe('Badge', () => {
     });
   });
 });
-
-

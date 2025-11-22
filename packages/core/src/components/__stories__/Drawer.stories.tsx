@@ -36,7 +36,9 @@ const DrawerExample = (args: any) => {
             <Text>This is the drawer content. You can put anything here.</Text>
           </DrawerBody>
           <DrawerFooter>
-            <Button variant="flat" onClick={() => setIsOpen(false)}>Cancel</Button>
+            <Button variant="flat" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
             <Button onClick={() => setIsOpen(false)}>Confirm</Button>
           </DrawerFooter>
         </DrawerContent>
@@ -57,7 +59,14 @@ export const Placements: Story = {
       <>
         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
           {(['top', 'bottom', 'left', 'right'] as const).map((p) => (
-            <Button key={p} size="sm" onClick={() => { setPlacement(p); setIsOpen(true); }}>
+            <Button
+              key={p}
+              size="sm"
+              onClick={() => {
+                setPlacement(p);
+                setIsOpen(true);
+              }}
+            >
               {p.charAt(0).toUpperCase() + p.slice(1)}
             </Button>
           ))}
@@ -65,7 +74,9 @@ export const Placements: Story = {
         <Drawer isOpen={isOpen} onOpenChange={setIsOpen} placement={placement}>
           <DrawerContent>
             <DrawerHeader>
-              <Text weight="semibold">{placement.charAt(0).toUpperCase() + placement.slice(1)} Drawer</Text>
+              <Text weight="semibold">
+                {placement.charAt(0).toUpperCase() + placement.slice(1)} Drawer
+              </Text>
             </DrawerHeader>
             <DrawerBody>
               <Text>This drawer opens from the {placement}.</Text>
@@ -79,4 +90,3 @@ export const Placements: Story = {
     );
   }
 };
-

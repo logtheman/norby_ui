@@ -36,7 +36,7 @@ describe('Checkbox', () => {
       const user = userEvent.setup();
       render(<Checkbox>Uncontrolled</Checkbox>);
       const checkbox = screen.getByRole('checkbox');
-      
+
       expect(checkbox).not.toBeChecked();
       await user.click(checkbox);
       expect(checkbox).toBeChecked();
@@ -46,9 +46,9 @@ describe('Checkbox', () => {
       const _user = userEvent.setup();
       const { rerender } = render(<Checkbox checked={false}>Controlled</Checkbox>);
       const checkbox = screen.getByRole('checkbox');
-      
+
       expect(checkbox).not.toBeChecked();
-      
+
       rerender(<Checkbox checked={true}>Controlled</Checkbox>);
       expect(checkbox).toBeChecked();
     });
@@ -59,7 +59,7 @@ describe('Checkbox', () => {
       const handleChange = vi.fn();
       const user = userEvent.setup();
       render(<Checkbox onChange={handleChange}>Test</Checkbox>);
-      
+
       await user.click(screen.getByRole('checkbox'));
       expect(handleChange).toHaveBeenCalledTimes(1);
     });
@@ -68,10 +68,10 @@ describe('Checkbox', () => {
       const user = userEvent.setup();
       render(<Checkbox>Test</Checkbox>);
       const checkbox = screen.getByRole('checkbox');
-      
+
       await user.click(checkbox);
       expect(checkbox).toBeChecked();
-      
+
       await user.click(checkbox);
       expect(checkbox).not.toBeChecked();
     });
@@ -105,7 +105,7 @@ describe('Checkbox', () => {
       const user = userEvent.setup();
       render(<Checkbox isDisabled>Disabled</Checkbox>);
       const checkbox = screen.getByRole('checkbox');
-      
+
       await user.click(checkbox);
       expect(checkbox).not.toBeChecked();
     });
@@ -113,7 +113,7 @@ describe('Checkbox', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<Checkbox size={size}>Test</Checkbox>);
@@ -125,7 +125,7 @@ describe('Checkbox', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Checkbox color={color}>Test</Checkbox>);
@@ -201,7 +201,7 @@ describe('CheckboxGroup', () => {
           <Checkbox value="2">Option 2</Checkbox>
         </CheckboxGroup>
       );
-      
+
       const checkbox1 = screen.getByRole('checkbox', { name: /option 1/i });
       await user.click(checkbox1);
       expect(checkbox1).toBeChecked();
@@ -214,7 +214,7 @@ describe('CheckboxGroup', () => {
           <Checkbox value="2">Option 2</Checkbox>
         </CheckboxGroup>
       );
-      
+
       expect(screen.getByRole('checkbox', { name: /option 1/i })).toBeChecked();
       expect(screen.getByRole('checkbox', { name: /option 2/i })).not.toBeChecked();
     });
@@ -229,7 +229,7 @@ describe('CheckboxGroup', () => {
           <Checkbox value="1">Option 1</Checkbox>
         </CheckboxGroup>
       );
-      
+
       await user.click(screen.getByRole('checkbox'));
       expect(handleChange).toHaveBeenCalledWith(['1']);
     });
@@ -243,10 +243,10 @@ describe('CheckboxGroup', () => {
           <Checkbox value="3">Option 3</Checkbox>
         </CheckboxGroup>
       );
-      
+
       await user.click(screen.getByRole('checkbox', { name: /option 1/i }));
       await user.click(screen.getByRole('checkbox', { name: /option 2/i }));
-      
+
       expect(screen.getByRole('checkbox', { name: /option 1/i })).toBeChecked();
       expect(screen.getByRole('checkbox', { name: /option 2/i })).toBeChecked();
       expect(screen.getByRole('checkbox', { name: /option 3/i })).not.toBeChecked();
@@ -296,5 +296,3 @@ describe('CheckboxGroup', () => {
     });
   });
 });
-
-

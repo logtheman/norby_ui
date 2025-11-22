@@ -80,7 +80,9 @@ export const WithIcons: S = {
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
       <Button startContent="→">Start Icon</Button>
       <Button endContent="→">End Icon</Button>
-      <Button startContent="←" endContent="→">Both Icons</Button>
+      <Button startContent="←" endContent="→">
+        Both Icons
+      </Button>
     </div>
   )
 };
@@ -88,8 +90,12 @@ export const IconOnly: S = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem' }}>
       <Button isIconOnly>+</Button>
-      <Button isIconOnly color="primary">+</Button>
-      <Button isIconOnly color="danger">×</Button>
+      <Button isIconOnly color="primary">
+        +
+      </Button>
+      <Button isIconOnly color="danger">
+        ×
+      </Button>
     </div>
   )
 };

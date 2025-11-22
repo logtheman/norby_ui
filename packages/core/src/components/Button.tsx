@@ -29,9 +29,7 @@ function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
-const DefaultSpinner = () => (
-  <span className="lui-btn__spinner" role="status" aria-live="polite" />
-);
+const DefaultSpinner = () => <span className="lui-btn__spinner" role="status" aria-live="polite" />;
 
 export const Button = React.forwardRef(
   <E extends React.ElementType = 'button'>(

@@ -54,5 +54,3 @@ export const Colors: Story = {
     </div>
   )
 };
-
-

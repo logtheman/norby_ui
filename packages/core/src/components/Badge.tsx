@@ -49,7 +49,14 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     );
 
     if (variant === 'dot') {
-      return <span ref={ref} className={cls} aria-label={typeof content === 'string' ? content : undefined} {...props} />;
+      return (
+        <span
+          ref={ref}
+          className={cls}
+          aria-label={typeof content === 'string' ? content : undefined}
+          {...props}
+        />
+      );
     }
 
     return (
@@ -60,5 +67,3 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   }
 );
 Badge.displayName = 'Badge';
-
-

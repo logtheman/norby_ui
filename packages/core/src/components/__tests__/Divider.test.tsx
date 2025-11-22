@@ -43,7 +43,7 @@ describe('Divider', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Divider color={color} />);
@@ -72,5 +72,3 @@ describe('Divider', () => {
     });
   });
 });
-
-

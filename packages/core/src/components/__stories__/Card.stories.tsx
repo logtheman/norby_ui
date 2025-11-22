@@ -67,7 +67,9 @@ export const Complete: Story = {
         <Text>Card content goes here. This is a complete card with header, body, and footer.</Text>
       </CardBody>
       <CardFooter>
-        <Button size="sm" variant="flat">Cancel</Button>
+        <Button size="sm" variant="flat">
+          Cancel
+        </Button>
         <Button size="sm">Save</Button>
       </CardFooter>
     </Card>
@@ -115,5 +117,3 @@ export const Hoverable: Story = {
     </Card>
   )
 };
-
-

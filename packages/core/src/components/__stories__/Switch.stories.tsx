@@ -22,15 +22,27 @@ export const Sizes: S = {
 export const Colors: S = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Switch color="default" defaultChecked>Default</Switch>
-      <Switch color="primary" defaultChecked>Primary</Switch>
-      <Switch color="secondary" defaultChecked>Secondary</Switch>
-      <Switch color="success" defaultChecked>Success</Switch>
-      <Switch color="warning" defaultChecked>Warning</Switch>
-      <Switch color="danger" defaultChecked>Danger</Switch>
+      <Switch color="default" defaultChecked>
+        Default
+      </Switch>
+      <Switch color="primary" defaultChecked>
+        Primary
+      </Switch>
+      <Switch color="secondary" defaultChecked>
+        Secondary
+      </Switch>
+      <Switch color="success" defaultChecked>
+        Success
+      </Switch>
+      <Switch color="warning" defaultChecked>
+        Warning
+      </Switch>
+      <Switch color="danger" defaultChecked>
+        Danger
+      </Switch>
     </div>
   )
 };
-export const Disabled: S = { args: { children: 'Disabled switch', isDisabled: true, defaultChecked: true } };
-
-
+export const Disabled: S = {
+  args: { children: 'Disabled switch', isDisabled: true, defaultChecked: true }
+};

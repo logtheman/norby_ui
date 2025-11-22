@@ -29,13 +29,32 @@ type S = StoryObj<typeof TextField>;
 
 export const Basic: S = { args: { label: 'Email', placeholder: 'you@example.com' } };
 export const WithDescription: S = { args: { label: 'Username', description: '3–16 characters' } };
-export const WithError: S = { args: { label: 'Password', errorMessage: 'Must be at least 8 chars', isInvalid: true } };
-export const Required: S = { args: { label: 'Email', placeholder: 'you@example.com', isRequired: true } };
-export const Disabled: S = { args: { label: 'Email', placeholder: 'you@example.com', isDisabled: true, defaultValue: 'disabled@example.com' } };
-export const ReadOnly: S = { args: { label: 'Email', defaultValue: 'readonly@example.com', isReadOnly: true } };
-export const Clearable: S = { args: { label: 'Search', placeholder: 'Type to search...', isClearable: true } };
-export const WithStartContent: S = { args: { label: 'Email', placeholder: 'you@example.com', startContent: '@' } };
-export const WithEndContent: S = { args: { label: 'Website', placeholder: 'example.com', endContent: '.com' } };
+export const WithError: S = {
+  args: { label: 'Password', errorMessage: 'Must be at least 8 chars', isInvalid: true }
+};
+export const Required: S = {
+  args: { label: 'Email', placeholder: 'you@example.com', isRequired: true }
+};
+export const Disabled: S = {
+  args: {
+    label: 'Email',
+    placeholder: 'you@example.com',
+    isDisabled: true,
+    defaultValue: 'disabled@example.com'
+  }
+};
+export const ReadOnly: S = {
+  args: { label: 'Email', defaultValue: 'readonly@example.com', isReadOnly: true }
+};
+export const Clearable: S = {
+  args: { label: 'Search', placeholder: 'Type to search...', isClearable: true }
+};
+export const WithStartContent: S = {
+  args: { label: 'Email', placeholder: 'you@example.com', startContent: '@' }
+};
+export const WithEndContent: S = {
+  args: { label: 'Website', placeholder: 'example.com', endContent: '.com' }
+};
 export const Variants: S = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

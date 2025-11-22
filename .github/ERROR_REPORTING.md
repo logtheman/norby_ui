@@ -17,6 +17,7 @@ This document explains how to share GitHub Actions errors with AI assistants (li
 ## Automated Method: GitHub Actions Integration
 
 The workflow automatically:
+
 - ✅ Captures all test failures in `test-failures.txt`
 - ✅ Creates a summary in the workflow summary
 - ✅ Uploads artifacts with full test output
@@ -27,12 +28,14 @@ The workflow automatically:
 When sharing errors with AI:
 
 1. **Include context:**
+
    ```
    Fix these test failures from GitHub Actions:
    [paste error output]
    ```
 
 2. **Or reference the artifact:**
+
    ```
    The test failures are in the GitHub Actions artifact test-results-12345.
    Fix all failing tests.
@@ -54,9 +57,9 @@ When sharing errors with AI:
 ## Manual Testing Locally
 
 Before pushing, run locally:
+
 ```bash
 pnpm test              # Run all tests
 pnpm test --reporter=verbose  # Detailed output
 pnpm check:staged      # Check only staged files
 ```
-

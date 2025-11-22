@@ -36,7 +36,9 @@ const ModalExample = (args: any) => {
             <Text>This is the modal content. You can put anything here.</Text>
           </ModalBody>
           <ModalFooter>
-            <Button variant="flat" onClick={() => setIsOpen(false)}>Cancel</Button>
+            <Button variant="flat" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
             <Button onClick={() => setIsOpen(false)}>Confirm</Button>
           </ModalFooter>
         </ModalContent>
@@ -57,7 +59,14 @@ export const Sizes: Story = {
       <>
         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
           {(['xs', 'sm', 'md', 'lg', 'xl', 'full'] as const).map((s) => (
-            <Button key={s} size="sm" onClick={() => { setSize(s); setIsOpen(true); }}>
+            <Button
+              key={s}
+              size="sm"
+              onClick={() => {
+                setSize(s);
+                setIsOpen(true);
+              }}
+            >
               {s.toUpperCase()}
             </Button>
           ))}
@@ -79,4 +88,3 @@ export const Sizes: Story = {
     );
   }
 };
-

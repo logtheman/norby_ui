@@ -40,7 +40,7 @@ describe('TextField', () => {
       const user = userEvent.setup();
       render(<TextField />);
       const input = screen.getByRole('textbox');
-      
+
       await user.type(input, 'test');
       expect(input).toHaveValue('test');
     });
@@ -48,9 +48,9 @@ describe('TextField', () => {
     it('works as controlled component', () => {
       const { rerender } = render(<TextField value="initial" />);
       const input = screen.getByRole('textbox');
-      
+
       expect(input).toHaveValue('initial');
-      
+
       rerender(<TextField value="updated" />);
       expect(input).toHaveValue('updated');
     });
@@ -61,7 +61,7 @@ describe('TextField', () => {
       const handleChange = vi.fn();
       const user = userEvent.setup();
       render(<TextField onChange={handleChange} />);
-      
+
       await user.type(screen.getByRole('textbox'), 'test');
       expect(handleChange).toHaveBeenCalled();
     });
@@ -70,7 +70,7 @@ describe('TextField', () => {
       const handleValueChange = vi.fn();
       const user = userEvent.setup();
       render(<TextField onValueChange={handleValueChange} />);
-      
+
       await user.type(screen.getByRole('textbox'), 'test');
       expect(handleValueChange).toHaveBeenCalledWith('test');
     });
@@ -79,9 +79,9 @@ describe('TextField', () => {
       const user = userEvent.setup();
       render(<TextField isClearable defaultValue="test" />);
       const input = screen.getByRole('textbox');
-      
+
       expect(input).toHaveValue('test');
-      
+
       const clearButton = screen.getByLabelText('Clear input');
       await user.click(clearButton);
       expect(input).toHaveValue('');
@@ -91,7 +91,7 @@ describe('TextField', () => {
       const handleClear = vi.fn();
       const user = userEvent.setup();
       render(<TextField isClearable defaultValue="test" onClear={handleClear} />);
-      
+
       await user.click(screen.getByLabelText('Clear input'));
       expect(handleClear).toHaveBeenCalledTimes(1);
     });
@@ -99,7 +99,7 @@ describe('TextField', () => {
 
   describe('Variants', () => {
     const variants = ['flat', 'bordered', 'faded', 'underlined'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(<TextField variant={variant} />);
@@ -111,7 +111,7 @@ describe('TextField', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<TextField color={color} />);
@@ -123,7 +123,7 @@ describe('TextField', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<TextField size={size} />);
@@ -217,5 +217,3 @@ describe('TextField', () => {
     });
   });
 });
-
-

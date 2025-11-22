@@ -110,5 +110,3 @@ export const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerP
   }
 );
 DateRangePicker.displayName = 'DateRangePicker';
-
-

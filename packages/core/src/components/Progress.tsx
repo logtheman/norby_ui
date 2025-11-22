@@ -79,11 +79,21 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     );
 
     return (
-      <div ref={ref} className={cls} role="progressbar" aria-valuemin={minValue} aria-valuemax={maxValue} aria-valuenow={isIndeterminate ? undefined : value} {...props}>
+      <div
+        ref={ref}
+        className={cls}
+        role="progressbar"
+        aria-valuemin={minValue}
+        aria-valuemax={maxValue}
+        aria-valuenow={isIndeterminate ? undefined : value}
+        {...props}
+      >
         {(label || valueLabel) && labelPlacement !== 'inside' && (
           <div className="lui-progress__label">
             {label}
-            {showValueLabel && valueLabel && <span className="lui-progress__value">{valueLabel}</span>}
+            {showValueLabel && valueLabel && (
+              <span className="lui-progress__value">{valueLabel}</span>
+            )}
           </div>
         )}
         <div className="lui-progress__track">
@@ -95,7 +105,9 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
             {labelPlacement === 'inside' && (label || valueLabel) && (
               <div className="lui-progress__label">
                 {label}
-                {showValueLabel && valueLabel && <span className="lui-progress__value">{valueLabel}</span>}
+                {showValueLabel && valueLabel && (
+                  <span className="lui-progress__value">{valueLabel}</span>
+                )}
               </div>
             )}
           </div>
@@ -145,7 +157,15 @@ export const CircularProgress = React.forwardRef<HTMLDivElement, CircularProgres
     );
 
     return (
-      <div ref={ref} className={cls} role="progressbar" aria-valuemin={minValue} aria-valuemax={maxValue} aria-valuenow={isIndeterminate ? undefined : value} {...props}>
+      <div
+        ref={ref}
+        className={cls}
+        role="progressbar"
+        aria-valuemin={minValue}
+        aria-valuemax={maxValue}
+        aria-valuenow={isIndeterminate ? undefined : value}
+        {...props}
+      >
         <svg className="lui-circular-progress__svg" viewBox="0 0 100 100">
           <circle
             className="lui-circular-progress__track"
@@ -180,5 +200,3 @@ export const CircularProgress = React.forwardRef<HTMLDivElement, CircularProgres
   }
 );
 CircularProgress.displayName = 'CircularProgress';
-
-

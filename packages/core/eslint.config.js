@@ -10,36 +10,38 @@ export default tseslint.config(
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
       react,
-      'react-hooks': reactHooks,
+      'react-hooks': reactHooks
     },
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
       parserOptions: {
         ecmaFeatures: {
-          jsx: true,
-        },
-      },
+          jsx: true
+        }
+      }
     },
     settings: {
       react: {
-        version: 'detect',
-      },
+        version: 'detect'
+      }
     },
     rules: {
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { 
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_'
+        }
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
-      'react-hooks/refs': 'off', // Disable refs rule that conflicts with cloneElement patterns
-    },
+      'react-hooks/refs': 'off' // Disable refs rule that conflicts with cloneElement patterns
+    }
   },
   {
-    ignores: ['dist/**', 'node_modules/**', '**/*.config.*', '**/__stories__/**'],
+    ignores: ['dist/**', 'node_modules/**', '**/*.config.*', '**/__stories__/**']
   }
 );
-

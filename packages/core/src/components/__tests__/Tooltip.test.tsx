@@ -30,7 +30,7 @@ describe('Tooltip', () => {
           <Button>Hover me</Button>
         </Tooltip>
       );
-      
+
       const button = screen.getByRole('button');
       act(() => {
         button.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
@@ -41,7 +41,7 @@ describe('Tooltip', () => {
       act(() => {
         vi.advanceTimersByTime(0); // For updatePosition setTimeout
       });
-      
+
       expect(screen.getByRole('tooltip')).toBeInTheDocument();
     });
   });
@@ -53,7 +53,7 @@ describe('Tooltip', () => {
           <Button>Hover me</Button>
         </Tooltip>
       );
-      
+
       const button = screen.getByRole('button');
       act(() => {
         button.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
@@ -64,7 +64,7 @@ describe('Tooltip', () => {
       act(() => {
         vi.advanceTimersByTime(0); // For updatePosition setTimeout
       });
-      
+
       expect(screen.getByText('Tooltip text')).toBeInTheDocument();
     });
 
@@ -74,7 +74,7 @@ describe('Tooltip', () => {
           <Button>Hover me</Button>
         </Tooltip>
       );
-      
+
       const button = screen.getByRole('button');
       act(() => {
         button.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
@@ -85,16 +85,16 @@ describe('Tooltip', () => {
       act(() => {
         vi.advanceTimersByTime(0); // For updatePosition setTimeout
       });
-      
+
       expect(screen.getByRole('tooltip')).toBeInTheDocument();
-      
+
       act(() => {
         button.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
       });
       act(() => {
         vi.advanceTimersByTime(0);
       });
-      
+
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
     });
 
@@ -104,7 +104,7 @@ describe('Tooltip', () => {
           <Button>Focus me</Button>
         </Tooltip>
       );
-      
+
       const button = screen.getByRole('button');
       act(() => {
         button.focus();
@@ -116,7 +116,7 @@ describe('Tooltip', () => {
       act(() => {
         vi.advanceTimersByTime(0); // For updatePosition setTimeout
       });
-      
+
       expect(screen.getByRole('tooltip')).toBeInTheDocument();
     });
 
@@ -126,7 +126,7 @@ describe('Tooltip', () => {
           <Button>Focus me</Button>
         </Tooltip>
       );
-      
+
       const button = screen.getByRole('button');
       act(() => {
         button.focus();
@@ -138,9 +138,9 @@ describe('Tooltip', () => {
       act(() => {
         vi.advanceTimersByTime(0); // For updatePosition setTimeout
       });
-      
+
       expect(screen.getByRole('tooltip')).toBeInTheDocument();
-      
+
       act(() => {
         button.blur();
         button.dispatchEvent(new FocusEvent('blur', { bubbles: true }));
@@ -148,7 +148,7 @@ describe('Tooltip', () => {
       act(() => {
         vi.advanceTimersByTime(0);
       });
-      
+
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
     });
   });
@@ -160,7 +160,7 @@ describe('Tooltip', () => {
           <Button>Hover me</Button>
         </Tooltip>
       );
-      
+
       const button = screen.getByRole('button');
       act(() => {
         button.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
@@ -168,7 +168,7 @@ describe('Tooltip', () => {
       act(() => {
         vi.advanceTimersByTime(100);
       });
-      
+
       // Tooltip should not appear even after delay
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
     });
@@ -176,7 +176,7 @@ describe('Tooltip', () => {
 
   describe('Placement', () => {
     const placements = ['top', 'bottom', 'left', 'right', 'top-start', 'top-end'] as const;
-    
+
     placements.forEach((placement) => {
       it(`renders with ${placement} placement`, async () => {
         render(
@@ -184,7 +184,7 @@ describe('Tooltip', () => {
             <Button>Hover</Button>
           </Tooltip>
         );
-        
+
         const button = screen.getByRole('button');
         act(() => {
           button.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
@@ -195,7 +195,7 @@ describe('Tooltip', () => {
         act(() => {
           vi.advanceTimersByTime(0); // For updatePosition setTimeout
         });
-        
+
         const tooltip = screen.getByRole('tooltip');
         expect(tooltip).toBeInTheDocument();
       });
@@ -204,7 +204,7 @@ describe('Tooltip', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, async () => {
         render(
@@ -212,7 +212,7 @@ describe('Tooltip', () => {
             <Button>Hover</Button>
           </Tooltip>
         );
-        
+
         const button = screen.getByRole('button');
         act(() => {
           button.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
@@ -223,7 +223,7 @@ describe('Tooltip', () => {
         act(() => {
           vi.advanceTimersByTime(0); // For updatePosition setTimeout
         });
-        
+
         const tooltip = screen.getByRole('tooltip');
         expect(tooltip).toHaveClass(`lui-tooltip--${color}`);
       });
@@ -237,7 +237,7 @@ describe('Tooltip', () => {
           <Button>Hover me</Button>
         </Tooltip>
       );
-      
+
       const button = screen.getByRole('button');
       act(() => {
         button.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
@@ -248,9 +248,8 @@ describe('Tooltip', () => {
       act(() => {
         vi.advanceTimersByTime(0); // For updatePosition setTimeout
       });
-      
+
       expect(screen.getByRole('tooltip')).toBeInTheDocument();
     });
   });
 });
-

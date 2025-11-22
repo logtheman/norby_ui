@@ -31,7 +31,7 @@ describe('Text', () => {
 
   describe('Sizes', () => {
     const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<Text size={size}>Test</Text>);
@@ -41,8 +41,17 @@ describe('Text', () => {
   });
 
   describe('Colors', () => {
-    const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger', 'muted', 'subtle'] as const;
-    
+    const colors = [
+      'default',
+      'primary',
+      'secondary',
+      'success',
+      'warning',
+      'danger',
+      'muted',
+      'subtle'
+    ] as const;
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Text color={color}>Test</Text>);
@@ -53,7 +62,7 @@ describe('Text', () => {
 
   describe('Weights', () => {
     const weights = ['normal', 'medium', 'semibold', 'bold'] as const;
-    
+
     weights.forEach((weight) => {
       it(`renders with ${weight} weight`, () => {
         render(<Text weight={weight}>Test</Text>);
@@ -115,5 +124,3 @@ describe('H5', () => {
     expect(heading.tagName).toBe('H5');
   });
 });
-
-

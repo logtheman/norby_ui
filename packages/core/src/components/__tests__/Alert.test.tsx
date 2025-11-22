@@ -31,7 +31,7 @@ describe('Alert', () => {
 
   describe('Variants', () => {
     const variants = ['flat', 'bordered', 'solid'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(<Alert variant={variant}>Test</Alert>);
@@ -42,7 +42,7 @@ describe('Alert', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Alert color={color}>Test</Alert>);
@@ -76,7 +76,7 @@ describe('Alert', () => {
 
   describe('Radius', () => {
     const radii = ['none', 'sm', 'md', 'lg', 'full'] as const;
-    
+
     radii.forEach((radius) => {
       it(`renders with ${radius} radius`, () => {
         render(<Alert radius={radius}>Test</Alert>);
@@ -100,4 +100,3 @@ describe('Alert', () => {
     });
   });
 });
-

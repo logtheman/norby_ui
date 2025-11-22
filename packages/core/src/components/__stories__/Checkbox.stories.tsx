@@ -44,19 +44,11 @@ export const Colors: Story = {
 };
 
 export const Indeterminate: Story = {
-  render: () => (
-    <Checkbox isIndeterminate>
-      Indeterminate checkbox
-    </Checkbox>
-  )
+  render: () => <Checkbox isIndeterminate>Indeterminate checkbox</Checkbox>
 };
 
 export const WithDescription: Story = {
-  render: () => (
-    <Checkbox description="This is a description">
-      Checkbox with description
-    </Checkbox>
-  )
+  render: () => <Checkbox description="This is a description">Checkbox with description</Checkbox>
 };
 
 export const Group: Story = {
@@ -78,5 +70,3 @@ export const GroupHorizontal: Story = {
     </CheckboxGroup>
   )
 };
-
-

@@ -40,7 +40,7 @@ describe('Typography', () => {
       'labelLarge',
       'linkLarge'
     ] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(<Typography variant={variant}>Test</Typography>);
@@ -57,5 +57,3 @@ describe('Typography', () => {
     });
   });
 });
-
-

@@ -28,26 +28,61 @@ interface ThemeShowcaseProps {
   size?: Size;
 }
 
-const ComponentGrid: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+const ComponentGrid: React.FC<{ title: string; children: React.ReactNode }> = ({
+  title,
+  children
+}) => (
   <div style={{ marginBottom: '3rem' }}>
-    <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem', color: 'var(--color-fg)' }}>
+    <h2
+      style={{
+        fontSize: '1.5rem',
+        fontWeight: 600,
+        marginBottom: '1.5rem',
+        color: 'var(--color-fg)'
+      }}
+    >
       {title}
     </h2>
     <div style={{ display: 'grid', gap: '1.5rem' }}>{children}</div>
   </div>
 );
 
-const VariantSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+const VariantSection: React.FC<{ title: string; children: React.ReactNode }> = ({
+  title,
+  children
+}) => (
   <div style={{ marginBottom: '2rem' }}>
-    <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-fg-muted)' }}>
+    <h3
+      style={{
+        fontSize: '1.125rem',
+        fontWeight: 600,
+        marginBottom: '1rem',
+        color: 'var(--color-fg-muted)'
+      }}
+    >
       {title}
     </h3>
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>{children}</div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+      {children}
+    </div>
   </div>
 );
 
-export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant: _variant, color: _color, size: _size }) => {
-  const buttonVariants: Variant[] = ['solid', 'bordered', 'light', 'flat', 'faded', 'shadow', 'ghost'];
+export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({
+  component,
+  variant: _variant,
+  color: _color,
+  size: _size
+}) => {
+  const buttonVariants: Variant[] = [
+    'solid',
+    'bordered',
+    'light',
+    'flat',
+    'faded',
+    'shadow',
+    'ghost'
+  ];
   const inputVariants: Variant[] = ['flat', 'bordered', 'faded', 'underlined'];
   const colors: Color[] = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'];
   const sizes: Size[] = ['sm', 'md', 'lg'];
@@ -109,7 +144,14 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
       }}
     >
       <div style={{ marginBottom: '3rem' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--color-fg)' }}>
+        <h1
+          style={{
+            fontSize: '2.5rem',
+            fontWeight: 700,
+            marginBottom: '0.5rem',
+            color: 'var(--color-fg)'
+          }}
+        >
           Theme Showcase
         </h1>
         <p style={{ fontSize: '1rem', color: 'var(--color-fg-muted)', marginBottom: '2rem' }}>
@@ -125,7 +167,13 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
               {showcase.variants.map((v) => {
                 if (showcase.name === 'Button') {
                   return (
-                    <Button key={v} variant={v as 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | 'ghost'} color="primary">
+                    <Button
+                      key={v}
+                      variant={
+                        v as 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | 'ghost'
+                      }
+                      color="primary"
+                    >
                       {v.charAt(0).toUpperCase() + v.slice(1)}
                     </Button>
                   );
@@ -279,7 +327,14 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
           {/* All Colors × All Variants Grid */}
           {showcase.variants && showcase.colors && showcase.name === 'Button' && (
             <div style={{ marginTop: '2rem' }}>
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-fg-muted)' }}>
+              <h3
+                style={{
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
+                  marginBottom: '1rem',
+                  color: 'var(--color-fg-muted)'
+                }}
+              >
                 All Variants × All Colors
               </h3>
               <div
@@ -308,7 +363,20 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
                         border: '1px solid var(--color-border)'
                       }}
                     >
-                      <Button variant={variant as 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | 'ghost'} color={color} size="md">
+                      <Button
+                        variant={
+                          variant as
+                            | 'solid'
+                            | 'bordered'
+                            | 'light'
+                            | 'flat'
+                            | 'faded'
+                            | 'shadow'
+                            | 'ghost'
+                        }
+                        color={color}
+                        size="md"
+                      >
                         {variant}
                       </Button>
                       <div style={{ textAlign: 'center' }}>
@@ -331,7 +399,12 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
           {colors.map((c) => {
             const radioColor = c === 'default' ? 'primary' : c;
             return (
-              <RadioGroup key={c} label={`${c.charAt(0).toUpperCase() + c.slice(1)} Radio`} color={radioColor} defaultValue="1">
+              <RadioGroup
+                key={c}
+                label={`${c.charAt(0).toUpperCase() + c.slice(1)} Radio`}
+                color={radioColor}
+                defaultValue="1"
+              >
                 <Radio value="1">Option 1</Radio>
                 <Radio value="2">Option 2</Radio>
               </RadioGroup>
@@ -390,13 +463,27 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
           </div>
         </VariantSection>
         <VariantSection title="Body Text">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '600px' }}>
-            <Typography variant="bodyLarge1">Body Large 1 - The quick brown fox jumps over the lazy dog</Typography>
-            <Typography variant="bodyLarge2">Body Large 2 - The quick brown fox jumps over the lazy dog</Typography>
-            <Typography variant="bodyMedium1">Body Medium 1 - The quick brown fox jumps over the lazy dog</Typography>
-            <Typography variant="bodyMedium2">Body Medium 2 - The quick brown fox jumps over the lazy dog</Typography>
-            <Typography variant="bodySmall1">Body Small 1 - The quick brown fox jumps over the lazy dog</Typography>
-            <Typography variant="bodySmall2">Body Small 2 - The quick brown fox jumps over the lazy dog</Typography>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '600px' }}
+          >
+            <Typography variant="bodyLarge1">
+              Body Large 1 - The quick brown fox jumps over the lazy dog
+            </Typography>
+            <Typography variant="bodyLarge2">
+              Body Large 2 - The quick brown fox jumps over the lazy dog
+            </Typography>
+            <Typography variant="bodyMedium1">
+              Body Medium 1 - The quick brown fox jumps over the lazy dog
+            </Typography>
+            <Typography variant="bodyMedium2">
+              Body Medium 2 - The quick brown fox jumps over the lazy dog
+            </Typography>
+            <Typography variant="bodySmall1">
+              Body Small 1 - The quick brown fox jumps over the lazy dog
+            </Typography>
+            <Typography variant="bodySmall2">
+              Body Small 2 - The quick brown fox jumps over the lazy dog
+            </Typography>
           </div>
         </VariantSection>
         <VariantSection title="Labels">
@@ -408,9 +495,15 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
         </VariantSection>
         <VariantSection title="Links">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Typography variant="linkLarge" as="a" href="#">Link Large</Typography>
-            <Typography variant="linkMedium" as="a" href="#">Link Medium</Typography>
-            <Typography variant="linkSmall" as="a" href="#">Link Small</Typography>
+            <Typography variant="linkLarge" as="a" href="#">
+              Link Large
+            </Typography>
+            <Typography variant="linkMedium" as="a" href="#">
+              Link Medium
+            </Typography>
+            <Typography variant="linkSmall" as="a" href="#">
+              Link Small
+            </Typography>
           </div>
         </VariantSection>
         <VariantSection title="Price">
@@ -431,4 +524,3 @@ export const ThemeShowcase: React.FC<ThemeShowcaseProps> = ({ component, variant
 };
 
 ThemeShowcase.displayName = 'ThemeShowcase';
-

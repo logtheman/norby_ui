@@ -5,7 +5,8 @@ type Color = 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'dang
 type Size = 'sm' | 'md' | 'lg';
 type Radius = 'none' | 'sm' | 'md' | 'lg' | 'full';
 
-export interface TimeInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
+export interface TimeInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
   variant?: Variant;
   color?: Color;
   size?: Size;
@@ -71,9 +72,7 @@ export const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
           </label>
         )}
         <div className={wrapperClasses}>
-          {startContent && (
-            <span className="lui-time-input__start-content">{startContent}</span>
-          )}
+          {startContent && <span className="lui-time-input__start-content">{startContent}</span>}
           <input
             ref={ref}
             id={inputId}
@@ -101,5 +100,3 @@ export const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
   }
 );
 TimeInput.displayName = 'TimeInput';
-
-

@@ -48,9 +48,15 @@ export const Horizontal: S = {
 export const WithDescription: S = {
   render: () => (
     <RadioGroup label="Choose an option" description="Select one option from the list">
-      <Radio value="option1" description="This is option 1">Option 1</Radio>
-      <Radio value="option2" description="This is option 2">Option 2</Radio>
-      <Radio value="option3" description="This is option 3">Option 3</Radio>
+      <Radio value="option1" description="This is option 1">
+        Option 1
+      </Radio>
+      <Radio value="option2" description="This is option 2">
+        Option 2
+      </Radio>
+      <Radio value="option3" description="This is option 3">
+        Option 3
+      </Radio>
     </RadioGroup>
   )
 };
@@ -62,5 +68,3 @@ export const Invalid: S = {
     </RadioGroup>
   )
 };
-
-

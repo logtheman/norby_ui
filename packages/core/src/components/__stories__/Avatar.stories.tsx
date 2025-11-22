@@ -63,4 +63,3 @@ export const Bordered: Story = {
     </div>
   )
 };
-

@@ -8,6 +8,8 @@
     "dev": "pnpm -r --filter ./packages/* run dev",
     "test": "pnpm -r --filter ./packages/* run test",
     "lint": "pnpm -r --filter ./packages/* run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,css}\"",
     "type-check": "pnpm -r --filter ./packages/* run type-check",
     "check": "pnpm type-check && pnpm lint",
     "check:staged": "lint-staged",
@@ -51,5 +53,14 @@
     "accessible",
     "typescript"
   ],
-  "author": "Logan Murdock <logtheman@gmail.com>"
+  "author": "Logan Murdock <logtheman@gmail.com>",
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  }
 }

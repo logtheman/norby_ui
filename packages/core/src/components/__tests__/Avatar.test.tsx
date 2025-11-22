@@ -22,7 +22,11 @@ describe('Avatar', () => {
     });
 
     it('renders children', () => {
-      render(<Avatar><span>Badge</span></Avatar>);
+      render(
+        <Avatar>
+          <span>Badge</span>
+        </Avatar>
+      );
       expect(screen.getByText('Badge')).toBeInTheDocument();
     });
 
@@ -59,7 +63,7 @@ describe('Avatar', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<Avatar size={size} name="Test" />);
@@ -70,7 +74,7 @@ describe('Avatar', () => {
 
   describe('Radius', () => {
     const radii = ['none', 'sm', 'md', 'lg', 'full'] as const;
-    
+
     radii.forEach((radius) => {
       it(`renders with ${radius} radius`, () => {
         render(<Avatar radius={radius} name="Test" />);
@@ -95,16 +99,16 @@ describe('Avatar', () => {
     it('shows fallback when image fails to load', async () => {
       const { container } = render(<Avatar src="invalid.jpg" name="John Doe" />);
       const img = container.querySelector('img') as HTMLImageElement;
-      
+
       // Simulate image error
       if (img) {
         const errorEvent = new Event('error', { bubbles: true });
         Object.defineProperty(errorEvent, 'target', { value: img, enumerable: true });
         img.dispatchEvent(errorEvent);
       }
-      
+
       // Wait for state update and check fallback
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
       expect(screen.getByText('JD')).toBeInTheDocument();
     });
   });
@@ -113,7 +117,7 @@ describe('Avatar', () => {
     it('has aria-label from alt prop', () => {
       render(<Avatar src="test.jpg" alt="User Avatar" />);
       const avatars = screen.getAllByRole('img');
-      const avatar = avatars.find(el => el.getAttribute('aria-label') === 'User Avatar');
+      const avatar = avatars.find((el) => el.getAttribute('aria-label') === 'User Avatar');
       expect(avatar).toBeInTheDocument();
       expect(avatar).toHaveAttribute('aria-label', 'User Avatar');
     });
@@ -130,5 +134,3 @@ describe('Avatar', () => {
     });
   });
 });
-
-

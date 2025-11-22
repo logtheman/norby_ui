@@ -137,12 +137,7 @@ export const DrawerContent = React.forwardRef<HTMLDivElement, DrawerContentProps
   ({ className, children, ...props }, ref) => {
     const { placement, size, onClose } = React.useContext(DrawerContext);
 
-    const cls = cx(
-      'lui-drawer',
-      `lui-drawer--${placement}`,
-      `lui-drawer--${size}`,
-      className
-    );
+    const cls = cx('lui-drawer', `lui-drawer--${placement}`, `lui-drawer--${size}`, className);
 
     return (
       <div ref={ref} className={cls} role="dialog" aria-modal="true" {...props}>
@@ -152,7 +147,14 @@ export const DrawerContent = React.forwardRef<HTMLDivElement, DrawerContentProps
           onClick={onClose}
           aria-label="Close"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
@@ -187,5 +189,3 @@ export const DrawerFooter = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
   }
 );
 DrawerFooter.displayName = 'DrawerFooter';
-
-

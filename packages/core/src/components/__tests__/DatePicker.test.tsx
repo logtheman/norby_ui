@@ -26,7 +26,7 @@ describe('DatePicker', () => {
 
   describe('Variants', () => {
     const variants = ['flat', 'bordered', 'faded', 'underlined'] as const;
-    
+
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         render(<DatePicker variant={variant} />);
@@ -44,5 +44,3 @@ describe('DatePicker', () => {
     });
   });
 });
-
-

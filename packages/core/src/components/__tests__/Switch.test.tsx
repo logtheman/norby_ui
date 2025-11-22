@@ -31,7 +31,7 @@ describe('Switch', () => {
       const user = userEvent.setup();
       render(<Switch>Uncontrolled</Switch>);
       const switchInput = screen.getByRole('switch');
-      
+
       expect(switchInput).not.toBeChecked();
       await user.click(switchInput);
       expect(switchInput).toBeChecked();
@@ -40,9 +40,9 @@ describe('Switch', () => {
     it('works as controlled component', () => {
       const { rerender } = render(<Switch checked={false}>Controlled</Switch>);
       const switchInput = screen.getByRole('switch');
-      
+
       expect(switchInput).not.toBeChecked();
-      
+
       rerender(<Switch checked={true}>Controlled</Switch>);
       expect(switchInput).toBeChecked();
     });
@@ -53,7 +53,7 @@ describe('Switch', () => {
       const handleChange = vi.fn();
       const user = userEvent.setup();
       render(<Switch onChange={handleChange}>Test</Switch>);
-      
+
       await user.click(screen.getByRole('switch'));
       expect(handleChange).toHaveBeenCalledTimes(1);
     });
@@ -62,10 +62,10 @@ describe('Switch', () => {
       const user = userEvent.setup();
       render(<Switch>Test</Switch>);
       const switchInput = screen.getByRole('switch');
-      
+
       await user.click(switchInput);
       expect(switchInput).toBeChecked();
-      
+
       await user.click(switchInput);
       expect(switchInput).not.toBeChecked();
     });
@@ -91,7 +91,7 @@ describe('Switch', () => {
       const user = userEvent.setup();
       render(<Switch isDisabled>Disabled</Switch>);
       const switchInput = screen.getByRole('switch');
-      
+
       await user.click(switchInput);
       expect(switchInput).not.toBeChecked();
     });
@@ -99,7 +99,7 @@ describe('Switch', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<Switch size={size}>Test</Switch>);
@@ -111,7 +111,7 @@ describe('Switch', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Switch color={color}>Test</Switch>);
@@ -141,5 +141,3 @@ describe('Switch', () => {
     });
   });
 });
-
-

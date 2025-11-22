@@ -4,16 +4,13 @@ import path from 'path';
 
 const config: StorybookConfig = {
   stories: ['../packages/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-  ],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
+    options: {}
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: 'tag'
   },
   async viteFinal(config) {
     const root = path.resolve(__dirname, '..');
@@ -21,16 +18,16 @@ const config: StorybookConfig = {
       resolve: {
         extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'],
         alias: {
-          '@logan/ui': path.resolve(root, 'packages/core/src'),
-        },
+          '@logan/ui': path.resolve(root, 'packages/core/src')
+        }
       },
       server: {
         fs: {
-          allow: [root],
-        },
-      },
+          allow: [root]
+        }
+      }
     });
-  },
+  }
 };
 
 export default config;

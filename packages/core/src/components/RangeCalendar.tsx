@@ -30,13 +30,11 @@ export const RangeCalendar = React.forwardRef<HTMLDivElement, RangeCalendarProps
     return (
       <div ref={ref} className={`lui-range-calendar ${className || ''}`}>
         <div className="lui-range-calendar__note">
-          Full calendar implementation requires a date library (e.g., date-fns, dayjs).
-          This is a placeholder component matching HeroUI&apos;s API structure.
+          Full calendar implementation requires a date library (e.g., date-fns, dayjs). This is a
+          placeholder component matching HeroUI&apos;s API structure.
         </div>
       </div>
     );
   }
 );
 RangeCalendar.displayName = 'RangeCalendar';
-
-

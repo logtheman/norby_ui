@@ -51,5 +51,3 @@ export const WithLabel: Story = {
     </div>
   )
 };
-
-

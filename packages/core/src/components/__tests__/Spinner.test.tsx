@@ -27,7 +27,7 @@ describe('Spinner', () => {
 
   describe('Sizes', () => {
     const sizes = ['sm', 'md', 'lg'] as const;
-    
+
     sizes.forEach((size) => {
       it(`renders with ${size} size`, () => {
         render(<Spinner size={size} />);
@@ -38,7 +38,7 @@ describe('Spinner', () => {
 
   describe('Colors', () => {
     const colors = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'] as const;
-    
+
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         render(<Spinner color={color} />);
@@ -55,7 +55,7 @@ describe('Spinner', () => {
 
     it('applies label placement classes', () => {
       const placements = ['top', 'bottom', 'left', 'right'] as const;
-      
+
       placements.forEach((placement) => {
         const { unmount } = render(<Spinner label="Loading" labelPlacement={placement} />);
         expect(screen.getByRole('status')).toHaveClass(`lui-spinner--label-${placement}`);
@@ -79,5 +79,3 @@ describe('Spinner', () => {
     });
   });
 });
-
-
