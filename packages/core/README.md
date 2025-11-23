@@ -1,22 +1,22 @@
-# @logan/ui
+# @logtheman/ui
 
 Accessible, themable React UI primitives with zero-runtime CSS variables.
 
 ## Installation
 
 ```bash
-npm install @logan/ui
+npm install @logtheman/ui
 # or
-pnpm add @logan/ui
+pnpm add @logtheman/ui
 # or
-yarn add @logan/ui
+yarn add @logtheman/ui
 ```
 
 ## Usage
 
 ```tsx
-import { Button, TextField } from '@logan/ui';
-import '@logan/ui/src/styles/base.css';
+import { Button, TextField } from '@logtheman/ui';
+import '@logtheman/ui/src/styles/base.css';
 
 function App() {
   return (
