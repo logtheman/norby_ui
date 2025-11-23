@@ -1,5 +1,11 @@
 # @logan/ui
 
+## 0.1.2
+
+### Patch Changes
+
+- Update README with correct package name
+
 ## 0.1.1
 
 ### Patch Changes
