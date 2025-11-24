@@ -11,7 +11,7 @@ export const Spacer = React.forwardRef<HTMLDivElement, SpacerProps>(
     const spacerStyle: React.CSSProperties = {
       ...style,
       ...(x !== undefined && { width: typeof x === 'number' ? `${x}rem` : x }),
-      ...(y !== undefined && { height: typeof y === 'number' ? `${y}rem` : y }),
+      ...(y !== undefined && { height: typeof y === 'number' ? `${y}rem` : y })
     };
 
     return <div ref={ref} className={className} style={spacerStyle} {...props} />;

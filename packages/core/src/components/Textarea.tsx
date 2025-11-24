@@ -5,7 +5,8 @@ type Color = 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'dang
 type Size = 'sm' | 'md' | 'lg';
 type Radius = 'none' | 'sm' | 'md' | 'lg' | 'full';
 
-export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
+export interface TextareaProps
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
   label?: string;
   description?: string;
   errorMessage?: string;
@@ -89,7 +90,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const textareaStyle: React.CSSProperties = {
       minHeight: `calc(${minRows} * 1.5em + var(--space-4))`,
       ...(maxRows && { maxHeight: `calc(${maxRows} * 1.5em + var(--space-4))` }),
-      ...style,
+      ...style
     };
 
     return (

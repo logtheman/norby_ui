@@ -19,7 +19,8 @@ export interface DropdownTriggerProps {
   children: React.ReactElement;
 }
 
-export interface DropdownMenuProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'autoFocus'> {
+export interface DropdownMenuProps
+  extends Omit<React.HTMLAttributes<HTMLUListElement>, 'autoFocus'> {
   variant?: Variant;
   color?: Color;
   selectionMode?: SelectionMode;
@@ -38,7 +39,7 @@ export interface DropdownMenuProps extends Omit<React.HTMLAttributes<HTMLUListEl
   disableAnimation?: boolean;
   onAction?: (key: React.Key) => void;
   onSelectionChange?: (
-    keys: 'all' | Set<React.Key> & { anchorKey?: string; currentKey?: string }
+    keys: 'all' | (Set<React.Key> & { anchorKey?: string; currentKey?: string })
   ) => void;
   onClose?: () => void;
   className?: string;
@@ -54,7 +55,8 @@ export interface DropdownSectionProps {
   children?: React.ReactNode;
 }
 
-export interface DropdownItemProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>, 'onClick' | 'title'> {
+export interface DropdownItemProps
+  extends Omit<React.LiHTMLAttributes<HTMLLIElement>, 'onClick' | 'title'> {
   itemKey?: React.Key;
   title?: string | React.ReactNode;
   textValue?: string;
@@ -179,7 +181,9 @@ export const DropdownMenu = React.forwardRef<HTMLUListElement, DropdownMenuProps
     const controlled = selectedKeysProp !== undefined;
     const selectedKeys = React.useMemo(() => {
       if (controlled) {
-        return selectedKeysProp === 'all' ? new Set<React.Key>() : new Set<React.Key>(selectedKeysProp);
+        return selectedKeysProp === 'all'
+          ? new Set<React.Key>()
+          : new Set<React.Key>(selectedKeysProp);
       }
       return internalSelectedKeys;
     }, [controlled, selectedKeysProp, internalSelectedKeys]);
@@ -204,7 +208,10 @@ export const DropdownMenu = React.forwardRef<HTMLUListElement, DropdownMenuProps
         if (disabledKeysSet.has(key)) return;
 
         if (selectionMode === 'single') {
-          const newKeys = selectedKeys.has(key) && !disallowEmptySelection ? new Set<React.Key>() : new Set([key]);
+          const newKeys =
+            selectedKeys.has(key) && !disallowEmptySelection
+              ? new Set<React.Key>()
+              : new Set([key]);
           handleSelectionChange(newKeys);
         } else if (selectionMode === 'multiple') {
           const newKeys = new Set(selectedKeys);
@@ -223,7 +230,16 @@ export const DropdownMenu = React.forwardRef<HTMLUListElement, DropdownMenuProps
           onClose?.();
         }
       },
-      [selectionMode, selectedKeys, disabledKeysSet, disallowEmptySelection, closeOnSelect, onAction, onClose, handleSelectionChange]
+      [
+        selectionMode,
+        selectedKeys,
+        disabledKeysSet,
+        disallowEmptySelection,
+        closeOnSelect,
+        onAction,
+        onClose,
+        handleSelectionChange
+      ]
     );
 
     const contextValue = React.useMemo(
@@ -239,7 +255,18 @@ export const DropdownMenu = React.forwardRef<HTMLUListElement, DropdownMenuProps
         hideSelectedIcon,
         closeOnSelect
       }),
-      [variant, color, selectionMode, selectedKeys, disabledKeysSet, handleSelectionChange, handleItemClick, onClose, hideSelectedIcon, closeOnSelect]
+      [
+        variant,
+        color,
+        selectionMode,
+        selectedKeys,
+        disabledKeysSet,
+        handleSelectionChange,
+        handleItemClick,
+        onClose,
+        hideSelectedIcon,
+        closeOnSelect
+      ]
     );
 
     const cls = cx(
@@ -260,10 +287,17 @@ export const DropdownMenu = React.forwardRef<HTMLUListElement, DropdownMenuProps
             {!hasItems && !hideEmptyContent && (
               <div className="lui-dropdown-menu__empty-content">{emptyContent}</div>
             )}
-            <ul ref={ref} className={cls} role={selectionMode === 'none' ? 'menu' : 'listbox'} {...props}>
+            <ul
+              ref={ref}
+              className={cls}
+              role={selectionMode === 'none' ? 'menu' : 'listbox'}
+              {...props}
+            >
               {children}
             </ul>
-            {bottomContent && <div className="lui-dropdown-menu__bottom-content">{bottomContent}</div>}
+            {bottomContent && (
+              <div className="lui-dropdown-menu__bottom-content">{bottomContent}</div>
+            )}
           </div>
         </PopoverContent>
       </DropdownContext.Provider>
@@ -361,7 +395,17 @@ export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>(
           onContextClose?.();
         }
       },
-      [isDisabled, isReadOnly, itemKey, onContextAction, onAction, onClick, closeOnSelect, selectionMode, onContextClose]
+      [
+        isDisabled,
+        isReadOnly,
+        itemKey,
+        onContextAction,
+        onAction,
+        onClick,
+        closeOnSelect,
+        selectionMode,
+        onContextClose
+      ]
     );
 
     const handleKeyDown = React.useCallback(
@@ -384,7 +428,17 @@ export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>(
         }
         props.onKeyDown?.(e);
       },
-      [isDisabled, isReadOnly, itemKey, onContextAction, onAction, closeOnSelect, selectionMode, onContextClose, props]
+      [
+        isDisabled,
+        isReadOnly,
+        itemKey,
+        onContextAction,
+        onAction,
+        closeOnSelect,
+        selectionMode,
+        onContextClose,
+        props
+      ]
     );
 
     const content = title || children;
@@ -411,7 +465,14 @@ export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>(
         {isSelected && !hideSelectedIcon && (
           <span className="lui-dropdown-item__selected-icon">
             {selectedIcon || (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             )}
@@ -433,7 +494,7 @@ export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>(
           data-selected={isSelected ? 'true' : undefined}
           {...props}
         >
-            <a
+          <a
             href={href}
             target={target}
             rel={rel}

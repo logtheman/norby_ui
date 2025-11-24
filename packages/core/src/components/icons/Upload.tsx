@@ -22,11 +22,6 @@ export const Upload: React.FC<Omit<IconProps, 'children'>> = (props) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M12 5V15"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
+    <path d="M12 5V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
   </Icon>
 );

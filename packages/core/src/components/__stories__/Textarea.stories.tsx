@@ -90,7 +90,12 @@ export const Variants: S = {
       <Textarea label="Bordered" variant="bordered" placeholder="Bordered textarea" minRows={3} />
       <Textarea label="Flat" variant="flat" placeholder="Flat textarea" minRows={3} />
       <Textarea label="Faded" variant="faded" placeholder="Faded textarea" minRows={3} />
-      <Textarea label="Underlined" variant="underlined" placeholder="Underlined textarea" minRows={3} />
+      <Textarea
+        label="Underlined"
+        variant="underlined"
+        placeholder="Underlined textarea"
+        minRows={3}
+      />
     </div>
   )
 };

@@ -186,8 +186,7 @@
   --font-mono:
     ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
-  --font-serif:
-    ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
   /* Typography - Font Sizes */
   --fs-xs: 0.75rem;
@@ -554,8 +553,7 @@
     --font-mono:
       ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono',
       'Courier New', monospace;
-    --font-serif:
-      ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
     /* Typography - Font Sizes */
     --fs-xs: 0.75rem;

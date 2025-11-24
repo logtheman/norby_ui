@@ -5,29 +5,35 @@ This document lists all design tokens (atoms) available in the component library
 ## ✅ Color Atoms
 
 ### Primary Colors
+
 - `--color-brand` through `--color-brand-900`
 - `--color-brand-foreground`
 
 ### Secondary Colors
+
 - `--color-secondary` through `--color-secondary-900`
 - `--color-secondary-foreground`
 
 ### Semantic Colors
+
 - `--color-success` through `--color-success-900`
 - `--color-warning` through `--color-warning-900`
 - `--color-danger` through `--color-danger-900`
 - `--color-default` through `--color-default-900`
 
 ### Surface Colors
+
 - `--color-bg` / `--color-fg`
 - `--color-surface` through `--color-surface-4`
 - `--color-surface-foreground` through `--color-surface-4-foreground`
 
 ### Border Colors
+
 - `--color-border`
 - `--color-border-hover`
 
 ### Other Colors
+
 - `--color-focus`
 - `--color-overlay`
 - `--color-fg-muted`
@@ -65,12 +71,14 @@ This document lists all design tokens (atoms) available in the component library
 ## ✅ Border Atoms
 
 ### Border Width
+
 - `--border-width-none` (0)
 - `--border-width-thin` (1px)
 - `--border-width-medium` (2px)
 - `--border-width-thick` (4px)
 
 ### Border Style
+
 - `--border-style-none`
 - `--border-style-solid`
 - `--border-style-dashed`
@@ -80,6 +88,7 @@ This document lists all design tokens (atoms) available in the component library
 ## ✅ Opacity Atoms
 
 ### Opacity Scale (0-100)
+
 - `--opacity-0` (0)
 - `--opacity-5` (0.05)
 - `--opacity-10` (0.1)
@@ -97,6 +106,7 @@ This document lists all design tokens (atoms) available in the component library
 - `--opacity-100` (1)
 
 ### Semantic Opacity Tokens
+
 - `--opacity-light` (0.2)
 - `--opacity-border` (0.3)
 - `--opacity-regular` (0.5)
@@ -106,6 +116,7 @@ This document lists all design tokens (atoms) available in the component library
 ## ✅ Elevation Atoms
 
 ### Shadows
+
 - `--shadow-none`
 - `--shadow-sm`
 - `--shadow-md`
@@ -115,6 +126,7 @@ This document lists all design tokens (atoms) available in the component library
 - `--shadow-inner`
 
 ### Elevation Levels
+
 - `--elevation-0` (none)
 - `--elevation-1` (sm)
 - `--elevation-2` (md)
@@ -137,11 +149,13 @@ This document lists all design tokens (atoms) available in the component library
 ## ✅ Typography Atoms
 
 ### Font Families
+
 - `--font-sans` (system sans-serif)
 - `--font-mono` (monospace)
 - `--font-serif` (serif)
 
 ### Font Sizes
+
 - `--fs-xs` (0.75rem)
 - `--fs-sm` (0.875rem)
 - `--fs-md` (1rem)
@@ -154,7 +168,9 @@ This document lists all design tokens (atoms) available in the component library
 - `--fs-6xl` (3rem)
 
 ### Typography Scale
+
 Comprehensive typography scale with:
+
 - **Headlines**: Large 1/2, Medium 1/2, Small 1/2
 - **Titles**: Large, Medium
 - **Subtitles**: Large, Medium, Small

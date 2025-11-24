@@ -68,7 +68,11 @@ describe('Chip', () => {
     });
 
     it('shows close button when isCloseable', () => {
-      render(<Chip isCloseable onClose={() => {}}>Chip</Chip>);
+      render(
+        <Chip isCloseable onClose={() => {}}>
+          Chip
+        </Chip>
+      );
       expect(screen.getByLabelText('Remove chip')).toBeInTheDocument();
     });
 
@@ -82,7 +86,11 @@ describe('Chip', () => {
     it('calls onClose when close button is clicked', async () => {
       const handleClose = vi.fn();
       const user = userEvent.setup();
-      render(<Chip isCloseable onClose={handleClose}>Chip</Chip>);
+      render(
+        <Chip isCloseable onClose={handleClose}>
+          Chip
+        </Chip>
+      );
 
       await user.click(screen.getByLabelText('Remove chip'));
       expect(handleClose).toHaveBeenCalledTimes(1);

@@ -118,9 +118,7 @@ describe('Dropdown', () => {
           <DropdownTrigger>
             <Button>Open</Button>
           </DropdownTrigger>
-          <DropdownMenu emptyContent="No items found">
-            {/* No items */}
-          </DropdownMenu>
+          <DropdownMenu emptyContent="No items found">{/* No items */}</DropdownMenu>
         </Dropdown>
       );
 
@@ -229,7 +227,11 @@ describe('Dropdown', () => {
             <Button>Open</Button>
           </DropdownTrigger>
           <DropdownMenu>
-            <DropdownItem itemKey="1" startContent={<span>Start</span>} endContent={<span>End</span>}>
+            <DropdownItem
+              itemKey="1"
+              startContent={<span>Start</span>}
+              endContent={<span>End</span>}
+            >
               Item
             </DropdownItem>
           </DropdownMenu>

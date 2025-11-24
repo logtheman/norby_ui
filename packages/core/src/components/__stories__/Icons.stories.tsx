@@ -75,15 +75,9 @@ export const AllIcons: Story = {
 
 export const Colors: Story = {
   render: () => {
-    const colors: Array<'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'foreground'> = [
-      'default',
-      'primary',
-      'secondary',
-      'success',
-      'warning',
-      'danger',
-      'foreground'
-    ];
+    const colors: Array<
+      'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'foreground'
+    > = ['default', 'primary', 'secondary', 'success', 'warning', 'danger', 'foreground'];
 
     return (
       <div
@@ -147,7 +141,9 @@ export const Sizes: Story = {
             }}
           >
             <Home size={size} color="primary" />
-            <span style={{ fontSize: '0.875rem', color: 'var(--color-fg-muted)' }}>{size.toUpperCase()}</span>
+            <span style={{ fontSize: '0.875rem', color: 'var(--color-fg-muted)' }}>
+              {size.toUpperCase()}
+            </span>
           </div>
         ))}
       </div>
@@ -167,16 +163,32 @@ export const InButtons: Story = {
           padding: '2rem'
         }}
       >
-        <Button variant="solid" color="primary" startContent={<Home size="md" color="foreground" />}>
+        <Button
+          variant="solid"
+          color="primary"
+          startContent={<Home size="md" color="foreground" />}
+        >
           Home
         </Button>
-        <Button variant="solid" color="success" startContent={<Plus size="md" color="foreground" />}>
+        <Button
+          variant="solid"
+          color="success"
+          startContent={<Plus size="md" color="foreground" />}
+        >
           Add
         </Button>
-        <Button variant="solid" color="danger" startContent={<Trash size="md" color="foreground" />}>
+        <Button
+          variant="solid"
+          color="danger"
+          startContent={<Trash size="md" color="foreground" />}
+        >
           Delete
         </Button>
-        <Button variant="solid" color="secondary" startContent={<Edit size="md" color="foreground" />}>
+        <Button
+          variant="solid"
+          color="secondary"
+          startContent={<Edit size="md" color="foreground" />}
+        >
           Edit
         </Button>
         <Button variant="solid" color="primary" isIconOnly>

@@ -15,7 +15,10 @@ function cx(...classes: Array<string | false | null | undefined>) {
 }
 
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
-  ({ radius = 'md', isLoaded = false, disableAnimation = false, className, children, ...props }, ref) => {
+  (
+    { radius = 'md', isLoaded = false, disableAnimation = false, className, children, ...props },
+    ref
+  ) => {
     const cls = cx(
       'lui-skeleton',
       `lui-skeleton--radius-${radius}`,
