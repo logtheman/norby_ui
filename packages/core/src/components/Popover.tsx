@@ -138,12 +138,12 @@ export const PopoverTrigger: React.FC<PopoverTriggerProps> = ({ children }) => {
 
 export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ className, children, ...props }, ref) => {
-    const { placement, radius } = React.useContext(PopoverContext);
+    const { placement, radius, isOpen } = React.useContext(PopoverContext);
     const [position, setPosition] = React.useState({ top: 0, left: 0 });
     const contentRef = React.useRef<HTMLDivElement | null>(null);
     const triggerRef = React.useRef<HTMLElement | null>(null);
 
-    React.useEffect(() => {
+    const updatePosition = React.useCallback(() => {
       // Find trigger element
       const trigger = document.querySelector('[aria-expanded="true"][aria-haspopup="true"]');
       if (!trigger || !contentRef.current) return;
@@ -201,6 +201,28 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
 
       setPosition({ top, left });
     }, [placement]);
+
+    React.useEffect(() => {
+      if (!isOpen) return;
+
+      // Use double requestAnimationFrame to ensure DOM is fully updated and layout is complete
+      let rafId: number;
+      rafId = requestAnimationFrame(() => {
+        rafId = requestAnimationFrame(() => {
+          updatePosition();
+        });
+      });
+
+      // Also update on window resize/scroll
+      window.addEventListener('resize', updatePosition);
+      window.addEventListener('scroll', updatePosition, true);
+
+      return () => {
+        cancelAnimationFrame(rafId);
+        window.removeEventListener('resize', updatePosition);
+        window.removeEventListener('scroll', updatePosition, true);
+      };
+    }, [isOpen, updatePosition]);
 
     const cls = cx('lui-popover', `lui-popover--radius-${radius}`, className);
 

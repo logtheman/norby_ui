@@ -1,6 +1,7 @@
 import './styles/base.css';
 export { Button } from './components/Button';
 export { TextField } from './components/TextField';
+export { Textarea } from './components/Textarea';
 export { Link } from './components/Link';
 export { Text, H1, H2, H3, H4, H5 } from './components/Text';
 export { Switch } from './components/Switch';
@@ -24,4 +25,17 @@ export { Divider } from './components/Divider';
 export { Avatar } from './components/Avatar';
 export { Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from './components/Drawer';
 export { Popover, PopoverContent, PopoverTrigger } from './components/Popover';
+export {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  DropdownSection
+} from './components/Dropdown';
 export { Typography } from './components/Typography';
+export { Icon } from './components/Icon';
+export { Chip } from './components/Chip';
+export { Skeleton } from './components/Skeleton';
+export { Spacer } from './components/Spacer';
+export { Kbd } from './components/Kbd';
+export * from './components/icons';
