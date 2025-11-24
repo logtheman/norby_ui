@@ -18,6 +18,13 @@
 
 **Solution:** Changed to `pnpm changeset publish` which correctly handles publishing packages versioned by changesets and respects the `"access": "public"` setting in `.changeset/config.json`.
 
+### Issue 3: NPM Authentication Not Configured
+**Problem:** The `changeset publish` command failed with `ENEEDAUTH` error because npm authentication wasn't properly configured for changesets.
+
+**Error:** `ENEEDAUTH This command requires you to be logged in to https://registry.npmjs.org/`
+
+**Solution:** Added explicit npm authentication configuration step that creates `~/.npmrc` with the NPM_TOKEN. The `setup-node` action's `registry-url` alone isn't sufficient for changesets - they need the token in `.npmrc` format.
+
 ## Pre-Push Checklist
 
 Before pushing to main, ensure:
@@ -91,6 +98,10 @@ NODE_AUTH_TOKEN=$NPM_TOKEN pnpm changeset publish
 ### Issue: CI fails on publish with EUSAGE error
 
 **Solution:** Use `pnpm changeset publish` instead of `pnpm publish` (already fixed).
+
+### Issue: CI fails on publish with ENEEDAUTH error
+
+**Solution:** Ensure npm authentication is configured via `~/.npmrc` file with the NPM_TOKEN (already fixed in workflow).
 
 ### Issue: Tests pass locally but fail in CI
 
