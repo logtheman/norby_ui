@@ -3,6 +3,7 @@
 ## What Went Wrong (v0.1.3 Release)
 
 ### Issue 1: Uncommitted Changes After `changeset version`
+
 **Problem:** The CI workflow ran `changeset version` which updates `package.json` and `CHANGELOG.md` files, but these changes were not committed before attempting to publish.
 
 **Error:** `ERR_PNPM_GIT_UNCLEAN Unclean working tree. Commit or stash changes first.`
@@ -10,6 +11,7 @@
 **Solution:** Added a commit step in `.github/workflows/release.yml` that automatically commits version changes before publishing.
 
 ### Issue 2: Incorrect Publish Command
+
 **Problem:** The workflow used `pnpm -w publish --access public` which is incorrect syntax and doesn't work with changesets.
 
 **Error:** `npm error code EUSAGE` - missing package-spec argument
@@ -30,6 +32,7 @@ Before pushing to main, ensure:
 ## Pre-Push Hook
 
 The `.husky/pre-push` hook automatically runs:
+
 - Format check
 - Tests
 - Type check
@@ -78,16 +81,21 @@ NODE_AUTH_TOKEN=$NPM_TOKEN pnpm changeset publish
 ## Common Issues & Solutions
 
 ### Issue: Pre-push hook fails
+
 **Solution:** Fix the failing check locally before pushing. The hook will show which check failed.
 
 ### Issue: CI fails on "Unclean working tree"
+
 **Solution:** Ensure the workflow includes a commit step after `changeset version` (already fixed).
 
 ### Issue: CI fails on publish with EUSAGE error
+
 **Solution:** Use `pnpm changeset publish` instead of `pnpm publish` (already fixed).
 
 ### Issue: Tests pass locally but fail in CI
-**Solution:** 
+
+**Solution:**
+
 - Ensure lockfile is committed (`pnpm-lock.yaml`)
 - Check Node.js version matches (CI uses Node 20)
 - Run `pnpm install --frozen-lockfile` locally to match CI
@@ -95,17 +103,20 @@ NODE_AUTH_TOKEN=$NPM_TOKEN pnpm changeset publish
 ## Best Practices
 
 1. **Always run checks before pushing:**
+
    ```bash
    pnpm check && pnpm test
    ```
 
 2. **Keep lockfile up to date:**
+
    ```bash
    pnpm install
    git add pnpm-lock.yaml
    ```
 
 3. **Create changesets for significant changes:**
+
    ```bash
    pnpm changeset
    ```
@@ -123,6 +134,7 @@ NODE_AUTH_TOKEN=$NPM_TOKEN pnpm changeset publish
 ## Version Bumping
 
 Version bumps are handled automatically by changesets:
+
 - **Patch** (0.1.2 → 0.1.3): Bug fixes, small changes
 - **Minor** (0.1.3 → 0.2.0): New features, backward compatible
 - **Major** (0.1.3 → 1.0.0): Breaking changes
