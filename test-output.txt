@@ -1,0 +1,74 @@
+
+> logan-ui-lib-monorepo@0.0.0 test /home/runner/work/norby_ui/norby_ui
+> pnpm -r --filter ./packages/* run test
+
+
+> @logtheman/ui@0.1.3 test /home/runner/work/norby_ui/norby_ui/packages/core
+> vitest run
+
+
+[1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90m/home/runner/work/norby_ui/norby_ui/packages/core[39m
+
+ [32m✓[39m src/components/__tests__/Button.test.tsx [2m([22m[2m46 tests[22m[2m)[22m[33m 372[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Dropdown.test.tsx [2m([22m[2m28 tests[22m[2m)[22m[33m 397[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Checkbox.test.tsx [2m([22m[2m35 tests[22m[2m)[22m[33m 561[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/RadioGroup.test.tsx [2m([22m[2m30 tests[22m[2m)[22m[33m 470[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Modal.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 333[2mms[22m[39m
+[90mstderr[2m | src/components/__tests__/TextField.test.tsx[2m > [22m[2mTextField[2m > [22m[2mInteractions[2m > [22m[2mclears value when clear button is clicked
+[22m[39mWarning: TextField contains an input of type undefined with both value and defaultValue props. Input elements must be either controlled or uncontrolled (specify either the value prop, or the defaultValue prop, but not both). Decide between using a controlled or uncontrolled input element and remove one of these props. More info: https://reactjs.org/link/controlled-components
+    at input
+    at div
+    at div
+    at /home/runner/work/norby_ui/norby_ui/packages/core/src/components/TextField.tsx:10:5
+
+ [32m✓[39m src/components/__tests__/TextField.test.tsx [2m([22m[2m37 tests[22m[2m)[22m[33m 401[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Tooltip.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[33m 324[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Select.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 314[2mms[22m[39m
+[90mstderr[2m | src/components/__tests__/Textarea.test.tsx[2m > [22m[2mTextarea[2m > [22m[2mStates[2m > [22m[2mrenders read-only state
+[22m[39mWarning: Textarea contains a textarea with both value and defaultValue props. Textarea elements must be either controlled or uncontrolled (specify either the value prop, or the defaultValue prop, but not both). Decide between using a controlled or uncontrolled textarea and remove one of these props. More info: https://reactjs.org/link/controlled-components
+    at textarea
+    at div
+    at div
+    at /home/runner/work/norby_ui/norby_ui/packages/core/src/components/Textarea.tsx:10:5
+
+ [32m✓[39m src/components/__tests__/Textarea.test.tsx [2m([22m[2m33 tests[22m[2m)[22m[33m 379[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Popover.test.tsx [2m([22m[2m17 tests[22m[2m)[22m[33m 306[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Tabs.test.tsx [2m([22m[2m19 tests[22m[2m)[22m[33m 323[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Progress.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[90m 226[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Card.test.tsx [2m([22m[2m22 tests[22m[2m)[22m[90m 174[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Switch.test.tsx [2m([22m[2m22 tests[22m[2m)[22m[90m 284[2mms[22m[39m
+[90mstderr[2m | src/components/__tests__/Avatar.test.tsx[2m > [22m[2mAvatar[2m > [22m[2mImage Error Handling[2m > [22m[2mshows fallback when image fails to load
+[22m[39mWarning: An update to Avatar inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at /home/runner/work/norby_ui/norby_ui/packages/core/src/components/Avatar.tsx:17:5
+
+ [32m✓[39m src/components/__tests__/Avatar.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[90m 201[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/TimeInput.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[90m 229[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Chip.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[90m 169[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Link.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[90m 223[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Badge.test.tsx [2m([22m[2m28 tests[22m[2m)[22m[90m 103[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Text.test.tsx [2m([22m[2m30 tests[22m[2m)[22m[90m 98[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Alert.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[90m 203[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Kbd.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[90m 72[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/DateRangePicker.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[90m 270[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Spinner.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[90m 185[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Divider.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[90m 154[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Skeleton.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[90m 70[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Spacer.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[90m 110[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/RangeCalendar.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[90m 42[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Typography.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[90m 74[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/DatePicker.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[90m 59[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m30 passed[39m[22m[90m (30)[39m
+[2m      Tests [22m [1m[32m665 passed[39m[22m[90m (665)[39m
+[2m   Start at [22m 03:03:23
+[2m   Duration [22m 14.39s[2m (transform 794ms, setup 7.79s, collect 3.00s, tests 7.13s, environment 17.52s, prepare 2.80s)[22m
+

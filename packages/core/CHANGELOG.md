@@ -1,5 +1,11 @@
 # @logan/ui
 
+## 0.1.4
+
+### Patch Changes
+
+- ba4f0f9: Update README with correct package name
+
 ## 0.1.2
 
 ### Patch Changes
