@@ -58,6 +58,6 @@ jobs:
           git add -A
           git diff --staged --quiet || git commit -m "chore: version packages [skip ci]"
           git push
-      - run: pnpm -w publish --access public
+      - run: pnpm changeset publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

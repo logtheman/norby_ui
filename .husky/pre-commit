@@ -1,1 +1,9 @@
-pnpm check:staged
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Pre-commit checks..."
+pnpm check:staged || {
+  echo "❌ Pre-commit checks failed. Please fix the issues above."
+  exit 1
+}
+echo "✅ Pre-commit checks passed!"

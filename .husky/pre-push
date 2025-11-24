@@ -1,28 +1,59 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "✨ Checking code formatting..."
+echo "🚀 Pre-push checks starting..."
+echo ""
+
+# Check for uncommitted changes
+if ! git diff-index --quiet HEAD --; then
+  echo "⚠️  Warning: You have uncommitted changes."
+  echo "   Consider committing or stashing them before pushing."
+  echo ""
+fi
+
+# 1. Format check
+echo "✨ [1/4] Checking code formatting..."
 pnpm format:check || {
-  echo "❌ Code formatting issues found. Run 'pnpm format' to fix."
+  echo ""
+  echo "❌ Code formatting issues found."
+  echo "   Run 'pnpm format' to fix automatically."
   exit 1
 }
+echo "   ✅ Formatting OK"
+echo ""
 
-echo "🧪 Running tests..."
-pnpm test || {
-  echo "❌ Tests failed. Please fix failing tests before pushing."
-  exit 1
-}
-
-echo "🔍 Running type check..."
+# 2. Type check
+echo "🔍 [2/4] Running type check..."
 pnpm type-check || {
-  echo "❌ Type check failed. Please fix type errors before pushing."
+  echo ""
+  echo "❌ Type check failed."
+  echo "   Please fix TypeScript errors before pushing."
   exit 1
 }
+echo "   ✅ Type check passed"
+echo ""
 
-echo "🔍 Running linter..."
-pnpm lint --max-warnings=100 || {
-  echo "❌ Linting failed. Please fix linting errors before pushing."
+# 3. Lint check
+echo "🔍 [3/4] Running linter..."
+pnpm lint || {
+  echo ""
+  echo "❌ Linting failed."
+  echo "   Please fix linting errors before pushing."
+  echo "   Run 'pnpm lint --fix' to auto-fix some issues."
   exit 1
 }
+echo "   ✅ Linting passed (0 errors, 0 warnings)"
+echo ""
 
-echo "✅ All checks passed!"
+# 4. Tests
+echo "🧪 [4/4] Running tests..."
+pnpm test || {
+  echo ""
+  echo "❌ Tests failed."
+  echo "   Please fix failing tests before pushing."
+  exit 1
+}
+echo "   ✅ All tests passed"
+echo ""
+
+echo "✅ All pre-push checks passed! Proceeding with push..."
