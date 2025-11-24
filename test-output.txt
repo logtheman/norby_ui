@@ -9,10 +9,11 @@
 
 [1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90m/home/runner/work/norby_ui/norby_ui/packages/core[39m
 
- [32m✓[39m src/components/__tests__/Button.test.tsx [2m([22m[2m46 tests[22m[2m)[22m[33m 402[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Dropdown.test.tsx [2m([22m[2m28 tests[22m[2m)[22m[33m 405[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Checkbox.test.tsx [2m([22m[2m35 tests[22m[2m)[22m[33m 573[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Modal.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 331[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Button.test.tsx [2m([22m[2m46 tests[22m[2m)[22m[33m 367[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Dropdown.test.tsx [2m([22m[2m28 tests[22m[2m)[22m[33m 413[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Checkbox.test.tsx [2m([22m[2m35 tests[22m[2m)[22m[33m 513[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Modal.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[90m 284[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/RadioGroup.test.tsx [2m([22m[2m30 tests[22m[2m)[22m[33m 409[2mms[22m[39m
 [90mstderr[2m | src/components/__tests__/TextField.test.tsx[2m > [22m[2mTextField[2m > [22m[2mInteractions[2m > [22m[2mclears value when clear button is clicked
 [22m[39mWarning: TextField contains an input of type undefined with both value and defaultValue props. Input elements must be either controlled or uncontrolled (specify either the value prop, or the defaultValue prop, but not both). Decide between using a controlled or uncontrolled input element and remove one of these props. More info: https://reactjs.org/link/controlled-components
     at input
@@ -20,10 +21,9 @@
     at div
     at /home/runner/work/norby_ui/norby_ui/packages/core/src/components/TextField.tsx:10:5
 
- [32m✓[39m src/components/__tests__/RadioGroup.test.tsx [2m([22m[2m30 tests[22m[2m)[22m[33m 462[2mms[22m[39m
- [32m✓[39m src/components/__tests__/TextField.test.tsx [2m([22m[2m37 tests[22m[2m)[22m[33m 405[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Tooltip.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[33m 305[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Select.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 330[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/TextField.test.tsx [2m([22m[2m37 tests[22m[2m)[22m[33m 385[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Tooltip.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[33m 306[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Select.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[90m 286[2mms[22m[39m
 [90mstderr[2m | src/components/__tests__/Textarea.test.tsx[2m > [22m[2mTextarea[2m > [22m[2mStates[2m > [22m[2mrenders read-only state
 [22m[39mWarning: Textarea contains a textarea with both value and defaultValue props. Textarea elements must be either controlled or uncontrolled (specify either the value prop, or the defaultValue prop, but not both). Decide between using a controlled or uncontrolled textarea and remove one of these props. More info: https://reactjs.org/link/controlled-components
     at textarea
@@ -31,12 +31,12 @@
     at div
     at /home/runner/work/norby_ui/norby_ui/packages/core/src/components/Textarea.tsx:10:5
 
- [32m✓[39m src/components/__tests__/Textarea.test.tsx [2m([22m[2m33 tests[22m[2m)[22m[33m 378[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Popover.test.tsx [2m([22m[2m17 tests[22m[2m)[22m[33m 300[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Tabs.test.tsx [2m([22m[2m19 tests[22m[2m)[22m[33m 335[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Progress.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[90m 262[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Card.test.tsx [2m([22m[2m22 tests[22m[2m)[22m[90m 189[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Switch.test.tsx [2m([22m[2m22 tests[22m[2m)[22m[33m 300[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Textarea.test.tsx [2m([22m[2m33 tests[22m[2m)[22m[33m 361[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Popover.test.tsx [2m([22m[2m17 tests[22m[2m)[22m[90m 282[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Tabs.test.tsx [2m([22m[2m19 tests[22m[2m)[22m[33m 304[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Progress.test.tsx [2m([22m[2m27 tests[22m[2m)[22m[33m 456[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Switch.test.tsx [2m([22m[2m22 tests[22m[2m)[22m[90m 294[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Card.test.tsx [2m([22m[2m22 tests[22m[2m)[22m[90m 186[2mms[22m[39m
 [90mstderr[2m | src/components/__tests__/Avatar.test.tsx[2m > [22m[2mAvatar[2m > [22m[2mImage Error Handling[2m > [22m[2mshows fallback when image fails to load
 [22m[39mWarning: An update to Avatar inside a test was not wrapped in act(...).
 
@@ -50,25 +50,25 @@ act(() => {
 This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
     at /home/runner/work/norby_ui/norby_ui/packages/core/src/components/Avatar.tsx:17:5
 
- [32m✓[39m src/components/__tests__/Avatar.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[90m 194[2mms[22m[39m
- [32m✓[39m src/components/__tests__/TimeInput.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[90m 196[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Chip.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[90m 202[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Link.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[90m 219[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Text.test.tsx [2m([22m[2m30 tests[22m[2m)[22m[90m 105[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Badge.test.tsx [2m([22m[2m28 tests[22m[2m)[22m[90m 97[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Alert.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[90m 203[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Kbd.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[90m 89[2mms[22m[39m
- [32m✓[39m src/components/__tests__/DateRangePicker.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[90m 289[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Spinner.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[90m 187[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Skeleton.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[90m 78[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Divider.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[90m 177[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Spacer.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[90m 100[2mms[22m[39m
- [32m✓[39m src/components/__tests__/RangeCalendar.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[90m 71[2mms[22m[39m
- [32m✓[39m src/components/__tests__/Typography.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[90m 64[2mms[22m[39m
- [32m✓[39m src/components/__tests__/DatePicker.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[90m 59[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Avatar.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[90m 191[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/TimeInput.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[90m 225[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Chip.test.tsx [2m([22m[2m25 tests[22m[2m)[22m[90m 209[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Link.test.tsx [2m([22m[2m23 tests[22m[2m)[22m[90m 198[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Badge.test.tsx [2m([22m[2m28 tests[22m[2m)[22m[90m 82[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Text.test.tsx [2m([22m[2m30 tests[22m[2m)[22m[90m 117[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Alert.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[90m 207[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/DateRangePicker.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[90m 282[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Kbd.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[90m 85[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Spinner.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[90m 223[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Divider.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[90m 162[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Skeleton.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[90m 76[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Spacer.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[90m 112[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/RangeCalendar.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[90m 70[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/Typography.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[90m 77[2mms[22m[39m
+ [32m✓[39m src/components/__tests__/DatePicker.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[90m 49[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m30 passed[39m[22m[90m (30)[39m
 [2m      Tests [22m [1m[32m665 passed[39m[22m[90m (665)[39m
-[2m   Start at [22m 03:16:05
-[2m   Duration [22m 14.75s[2m (transform 734ms, setup 7.72s, collect 3.27s, tests 7.31s, environment 17.93s, prepare 2.86s)[22m
+[2m   Start at [22m 03:26:50
+[2m   Duration [22m 13.88s[2m (transform 796ms, setup 6.91s, collect 2.83s, tests 7.21s, environment 16.80s, prepare 2.68s)[22m
 
