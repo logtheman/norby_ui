@@ -26,6 +26,46 @@
 
 **Solution:** Added explicit npm authentication configuration step that creates `~/.npmrc` with the NPM_TOKEN. The `setup-node` action's `registry-url` alone isn't sufficient for changesets - they need the token in `.npmrc` format.
 
+### Issue 4: NPM Publish Permission Error (404)
+
+**Problem:** Publishing fails with `E404 Not Found` error even though the package exists. This typically indicates the NPM_TOKEN doesn't have write/publish permissions for the `@logtheman` scope.
+
+**Error:** `E404 Not Found - PUT https://registry.npmjs.org/@logtheman%2fui - '@logtheman/ui@0.1.4' is not in this registry.`
+
+**Note:** If the package already exists on npm (e.g., version 0.1.2 is published), the scope exists. The 404 error means the token lacks publish permissions.
+
+**Solution:**
+
+1. **Verify Token Scope:**
+   - The token must be scoped to the `@logtheman` organization
+   - "Publish" type tokens should work, but verify they're associated with the correct organization
+   - Check that your npm account is a member of the `@logtheman` organization
+
+2. **Generate a New Token (if needed):**
+   - Go to https://www.npmjs.com/settings/[username]/tokens
+   - Click "Generate New Token"
+   - Select "Automation" or "Publish" type
+   - **Important:** Ensure the token is scoped to `@logtheman` organization
+   - Set expiration to "Never" for CI/CD use
+   - Copy the token immediately (you won't see it again)
+
+3. **Update GitHub Secret:**
+   - Go to your GitHub repository → Settings → Secrets and variables → Actions
+   - Update the `NPM_TOKEN` secret with the new token
+   - Ensure the token value is correct (no extra spaces or newlines)
+
+4. **Verify Organization Access:**
+   - Ensure your npm account is a member of the `@logtheman` organization
+   - Verify you have "publish" permissions for that organization
+   - Check organization settings at https://www.npmjs.com/org/logtheman/settings/members
+
+5. **Test Token Locally (optional):**
+   ```bash
+   echo "//registry.npmjs.org/:_authToken=YOUR_TOKEN" > ~/.npmrc
+   npm whoami --registry=https://registry.npmjs.org
+   # Should show your npm username
+   ```
+
 ## Pre-Push Checklist
 
 Before pushing to main, ensure:
@@ -103,6 +143,16 @@ NODE_AUTH_TOKEN=$NPM_TOKEN pnpm changeset publish
 ### Issue: CI fails on publish with ENEEDAUTH error
 
 **Solution:** Ensure npm authentication is configured via `~/.npmrc` file with the NPM_TOKEN (already fixed in workflow).
+
+### Issue: CI fails on publish with E404 Not Found error
+
+**Solution:**
+
+- **If package already exists:** The token lacks publish permissions. Generate a new Automation or Granular Access Token with write/publish permissions for `@logtheman` scope
+- **If package doesn't exist:** Create the npm organization/scope on npmjs.com first, then ensure token has publish permissions
+- Verify the token is associated with an account that has access to the `@logtheman` organization
+- Check token type: Use "Automation" or "Granular Access Token" (classic tokens are being deprecated)
+- Update GitHub secret `NPM_TOKEN` with the correct token
 
 ### Issue: Tests pass locally but fail in CI
 

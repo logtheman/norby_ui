@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
       - name: Configure npm authentication
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
@@ -61,4 +61,7 @@ jobs:
           git add -A
           git diff --staged --quiet || git commit -m "chore: version packages [skip ci]"
           git push
-      - run: pnpm changeset publish
+      - name: Publish packages
+        run: pnpm changeset publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
