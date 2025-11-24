@@ -2,8 +2,25 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "🔍 Pre-commit checks..."
+echo ""
+
+# Auto-format code
+echo "✨ [1/2] Auto-formatting code..."
+pnpm format || {
+  echo "❌ Formatting failed."
+  exit 1
+}
+echo "   ✅ Code formatted"
+echo ""
+
+# Run lint-staged checks
+echo "🔍 [2/2] Running lint-staged checks..."
 pnpm check:staged || {
+  echo ""
   echo "❌ Pre-commit checks failed. Please fix the issues above."
   exit 1
 }
+echo "   ✅ Lint-staged checks passed"
+echo ""
+
 echo "✅ Pre-commit checks passed!"

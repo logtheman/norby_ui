@@ -19,6 +19,7 @@
 **Solution:** Changed to `pnpm changeset publish` which correctly handles publishing packages versioned by changesets and respects the `"access": "public"` setting in `.changeset/config.json`.
 
 ### Issue 3: NPM Authentication Not Configured
+
 **Problem:** The `changeset publish` command failed with `ENEEDAUTH` error because npm authentication wasn't properly configured for changesets.
 
 **Error:** `ENEEDAUTH This command requires you to be logged in to https://registry.npmjs.org/`
