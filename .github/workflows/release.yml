@@ -51,6 +51,13 @@ jobs:
           echo "Tests failed. Check artifacts for details."
           exit 1
       - run: pnpm -w changeset version
+      - name: Commit version changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore: version packages [skip ci]"
+          git push
       - run: pnpm -w publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
